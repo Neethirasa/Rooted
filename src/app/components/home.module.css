@@ -1,0 +1,73 @@
+/* src/app/page.module.css */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #1a001f;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+  background-color: #342848;
+  height: 70px; /* Keeps the height of the header fixed */
+}
+
+.searchBar {
+  display: flex;
+  align-items: center; /* Ensures icons and input are vertically aligned */
+  gap: 10px;
+}
+
+.searchBar input {
+  padding: 5px 15px;
+  border: none;
+  border-radius: 30px;
+  width: 300px;
+  height: 35px; /* Keeps the search bar height fixed */
+}
+
+.icons {
+  display: flex;
+  align-items: center; /* Ensures the icons are vertically aligned */
+  gap: 5px; /* Space between icons */
+}
+
+.icons img {
+  height: 50px; /* Increase the size of the icons without changing the header */
+  width: 50px; /* Ensure the icons are larger */
+  object-fit: contain; /* Ensures the icon fits well in its box */
+  padding-top: 5px;
+}
+
+.main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageGrid {
+  display: flex;
+  gap: 20px;
+}
+
+.imageItem {
+  width: 300px;
+  height: 400px;
+  background-color: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.footer {
+  padding: 10px;
+  background-color: #342848;
+}
+
+.footerContent {
+  width: 100%;
+  height: 50px;
+  background-color: #342848;
+}
