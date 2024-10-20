@@ -6,12 +6,16 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <div className={styles.searchBar}>
-          <input type="text" placeholder="Search..." />
-          <div className={styles.icons}>
+        <div className={styles.icons}>
+          {/* Search icon and search bar together */}
+          <div className={styles.searchContainer}>
             <Image src="/images/search.svg" alt="Search Icon" width={40} height={40} />
-            <Image src="/images/menu.svg" alt="Menu Icon" width={40} height={40} />
+            <div className={styles.searchBar}>
+              <input type="text" placeholder="Search..." />
+            </div>
           </div>
+          {/* Menu icon */}
+          <Image src="/images/menu.svg" alt="Menu Icon" width={40} height={40} />
         </div>
       </header>
 

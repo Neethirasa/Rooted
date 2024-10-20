@@ -11,34 +11,52 @@
   justify-content: flex-end;
   padding: 20px;
   background-color: #342848;
-  height: 70px; /* Keeps the height of the header fixed */
+  height: 70px;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
 .searchBar {
   display: flex;
-  align-items: center; /* Ensures icons and input are vertically aligned */
-  gap: 10px;
+  align-items: center;
+  position: absolute;
+  right: 45px; /* Ensure it appears to the left of the search icon */
+  width: 0; /* Initially hidden */
+  opacity: 0;
+  overflow: hidden;
+  transition: width 0.3s ease, opacity 0.3s ease;
 }
 
 .searchBar input {
   padding: 5px 15px;
   border: none;
   border-radius: 30px;
-  width: 300px;
-  height: 35px; /* Keeps the search bar height fixed */
+  width: 300px; /* Full width when visible */
+  height: 40px;
+  color: black;
+  background-color: white;
 }
 
 .icons {
   display: flex;
-  align-items: center; /* Ensures the icons are vertically aligned */
-  gap: 5px; /* Space between icons */
+  align-items: center;
+  gap: 10px;
+  padding-right: 70px;
 }
 
 .icons img {
-  height: 50px; /* Increase the size of the icons without changing the header */
-  width: 50px; /* Ensure the icons are larger */
-  object-fit: contain; /* Ensures the icon fits well in its box */
-  padding-top: 5px;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+}
+
+.searchContainer:hover .searchBar {
+  width: 300px; /* Expand the search bar on hover */
+  opacity: 1;
 }
 
 .main {
