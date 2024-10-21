@@ -8,10 +8,47 @@
 
 .header {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between; /* Ensure space between left, center, and right sections */
+  align-items: center;
   padding: 20px;
   background-color: #342848;
-  height: 70px;
+  height: 100px;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.centerSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1; /* Allow the logo to take up the center space */
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.logoContainer img {
+  margin-right: 10px;
+  padding-top: 15px;
+}
+
+.companyName {
+  font-size: 24px;
+  color: #DFCFBD;
+  font-family: "Arial", sans-serif;
+  padding-left: 10px;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
 }
 
 .searchContainer {
@@ -24,7 +61,7 @@
   display: flex;
   align-items: center;
   position: absolute;
-  right: 45px; /* Ensure it appears to the left of the search icon */
+  right: 60px;
   width: 0; /* Initially hidden */
   opacity: 0;
   overflow: hidden;
@@ -35,22 +72,15 @@
   padding: 5px 15px;
   border: none;
   border-radius: 30px;
-  width: 300px; /* Full width when visible */
+  width: 300px;
   height: 40px;
   color: black;
-  background-color: white;
+  background-color: #DFCFBD;
 }
 
-.icons {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding-right: 70px;
-}
-
-.icons img {
-  height: 40px;
-  width: 40px;
+.rightSection img {
+  height: 50px;
+  width: 50px;
   cursor: pointer;
 }
 
@@ -72,8 +102,8 @@
 }
 
 .imageItem {
-  width: 300px;
-  height: 400px;
+  width: 325px;
+  height: 425px;
   background-color: #fff;
   border-radius: 20px;
   overflow: hidden;
