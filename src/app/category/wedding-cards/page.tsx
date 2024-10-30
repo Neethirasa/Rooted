@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import styles from '../category.module.css';
+import Link from 'next/link';
 
 const categories = [
   { name: "Wedding Cards", path: "/category/wedding-cards" },
@@ -30,9 +31,10 @@ export default function WeddingCards() {
         </div>
 
         <div className={styles.centerSection}>
-          <div className={styles.logoContainer}>
+          <Link href="/" className={styles.logoContainer}> {/* Make logo clickable */}
             <Image src="/images/logo1.png" alt="Company Logo" width={260} height={260} />
-          </div>
+            <span className={styles.companyName}></span>
+          </Link>
         </div>
 
         <div className={styles.rightSection}>

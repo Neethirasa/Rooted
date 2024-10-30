@@ -20,10 +20,10 @@ export default function Home() {
         </div>
 
         <div className={styles.centerSection}>
-          <div className={styles.logoContainer}>
+          <Link href="/" className={styles.logoContainer}> {/* Make logo clickable */}
             <Image src="/images/logo1.png" alt="Company Logo" width={260} height={260} />
             <span className={styles.companyName}></span>
-          </div>
+          </Link>
         </div>
 
         <div className={styles.rightSection}>
