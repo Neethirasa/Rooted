@@ -8,13 +8,13 @@ import Link from 'next/link';
 
 const categories = [
   { name: "Wedding Cards", path: "/category/wedding-cards" },
+  { name: "Holiday Cards", path: "/category/holiday-cards" },
   { name: "Greeting Cards", path: "/category/greeting-cards" },
-  { name: "Wishing Cards", path: "/category/wishing-cards" },
-  { name: "Post Cards", path: "/category/post-cards" }
+  { name: "Photo Cards", path: "/category/photo-cards" }
 ];
 
 export default function WeddingCards() {
-  const [selectedCategory, setSelectedCategory] = useState("Post Cards");
+  const [selectedCategory, setSelectedCategory] = useState("Holiday Cards");
   const router = useRouter();
 
   const handleCategoryClick = (category: { name: string, path: string }) => {
@@ -36,6 +36,7 @@ export default function WeddingCards() {
             <span className={styles.companyName}></span>
           </Link>
         </div>
+
 
         <div className={styles.rightSection}>
           <div className={styles.searchContainer}>
@@ -70,12 +71,12 @@ export default function WeddingCards() {
         <main className={styles.mainContent}>
           <h1>{selectedCategory}</h1>
           <div className={styles.imageGrid}>
-            <Image src="/images/image4.jpeg" alt={`${selectedCategory} 1`} width={150} height={150} />
-            <Image src="/images/image2.jpeg" alt={`${selectedCategory} 2`} width={150} height={150} />
-            <Image src="/images/image3.jpeg" alt={`${selectedCategory} 3`} width={150} height={150} />
+            <Image src="/images/image2.jpeg" alt={`${selectedCategory} 1`} width={150} height={150} />
+            <Image src="/images/image3.jpeg" alt={`${selectedCategory} 2`} width={150} height={150} />
+            <Image src="/images/image1.jpeg" alt={`${selectedCategory} 3`} width={150} height={150} />
             <Image src="/images/image4.jpeg" alt={`${selectedCategory} 4`} width={150} height={150} />
-            <Image src="/images/image5.jpeg" alt={`${selectedCategory} 5`} width={150} height={150} />
-            <Image src="/images/image6.jpeg" alt={`${selectedCategory} 6`} width={150} height={150} />
+            <Image src="/images/image1.jpeg" alt={`${selectedCategory} 5`} width={150} height={150} />
+            <Image src="/images/image2.jpeg" alt={`${selectedCategory} 6`} width={150} height={150} />
           </div>
         </main>
       </div>

@@ -2,21 +2,52 @@
 "use client";
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import styles from './home.module.css';
 
 const categories = {
   A: { label: 'Wedding Cards', images: ['/images/image1.jpeg', '/images/image2.jpeg', '/images/image3.jpeg'], path: '/category/wedding-cards' },
-  B: { label: 'Greeting Cards', images: ['/images/image2.jpeg', '/images/image5.jpeg', '/images/image6.jpeg'], path: '/category/greeting-cards' },
-  C: { label: 'Wishing Cards', images: ['/images/image3.jpeg', '/images/image8.jpeg', '/images/image9.jpeg'], path: '/category/wishing-cards' },
-  D: { label: 'Post Cards', images: ['/images/image4.jpeg', '/images/image11.jpeg', '/images/image12.jpeg'], path: '/category/post-cards' }
+  B: { label: 'Holiday Cards', images: ['/images/image2.jpeg', '/images/image5.jpeg', '/images/image6.jpeg'], path: '/category/holiday-cards' },
+  C: { label: 'Greeting Cards', images: ['/images/image3.jpeg', '/images/image8.jpeg', '/images/image9.jpeg'], path: '/category/greeting-cards' },
+  D: { label: 'Photo Cards', images: ['/images/image4.jpeg', '/images/image11.jpeg', '/images/image12.jpeg'], path: '/category/photo-cards' }
 };
 
 export default function Home() {
+  const [showMenu, setShowMenu] = useState(false);
+  const [searchInput, setSearchInput] = useState('');
+  const [filteredCategories, setFilteredCategories] = useState(Object.keys(categories));
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
+  // Handle search input change
+  const handleSearchChange = (e) => {
+    const input = e.target.value.toLowerCase();
+    setSearchInput(input);
+
+    // Filter categories based on search input or show all if input is empty or has no matches
+    if (input) {
+      const matches = Object.keys(categories).filter((key) =>
+        categories[key].label.toLowerCase().includes(input)
+      );
+      setFilteredCategories(matches.length > 0 ? matches : Object.keys(categories));
+    } else {
+      setFilteredCategories(Object.keys(categories)); // Reset to all categories
+    }
+  };
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <div className={styles.leftSection}>
-          <Image src="/images/menu.svg" alt="Menu Icon" width={50} height={50} />
+        <div className={styles.leftSection} onMouseEnter={toggleMenu} onMouseLeave={() => setShowMenu(false)}>
+          <Image src="/images/menu.svg" alt="Menu Icon" width={50} height={50} onClick={toggleMenu} />
+          {showMenu && (
+            <div className={styles.dropdownMenu}>
+              <Link href="/help" className={styles.menuItem}>Help</Link>
+              <Link href="/contact" className={styles.menuItem}>Contact</Link>
+            </div>
+          )}
         </div>
 
         <div className={styles.centerSection}>
@@ -30,7 +61,12 @@ export default function Home() {
           <div className={styles.searchContainer}>
             <Image src="/images/search.svg" alt="Search Icon" width={50} height={50} />
             <div className={styles.searchBar}>
-              <input type="text" placeholder="Search..." />
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchInput}
+                onChange={handleSearchChange} // Update search input
+              />
             </div>
           </div>
         </div>
@@ -38,7 +74,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <div className={styles.imageGrid}>
-          {Object.keys(categories).map((category) => (
+          {filteredCategories.map((category) => (
             <Link
               key={category}
               href={categories[category].path}

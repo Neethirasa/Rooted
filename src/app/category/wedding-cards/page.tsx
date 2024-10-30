@@ -8,9 +8,9 @@ import Link from 'next/link';
 
 const categories = [
   { name: "Wedding Cards", path: "/category/wedding-cards" },
+  { name: "Holiday Cards", path: "/category/holiday-cards" },
   { name: "Greeting Cards", path: "/category/greeting-cards" },
-  { name: "Wishing Cards", path: "/category/wishing-cards" },
-  { name: "Post Cards", path: "/category/post-cards" }
+  { name: "Photo Cards", path: "/category/photo-cards" }
 ];
 
 export default function WeddingCards() {
