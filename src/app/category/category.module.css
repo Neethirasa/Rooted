@@ -1,0 +1,142 @@
+/* src/app/category/category.module.css */
+
+.categoryContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #1a001f;
+  color: #dfcfbd;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #342848;
+  height: 85px;
+}
+
+.leftSection, .rightSection, .centerSection {
+  display: flex;
+  align-items: center;
+}
+
+.centerSection {
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.logoContainer img {
+  margin-right: 10px;
+}
+
+.companyName {
+  font-size: 24px;
+  color: #DFCFBD;
+}
+
+/* Content Wrapper with Scrollable Sidebar and Main Content */
+.contentWrapper {
+  display: flex;
+  flex-grow: 1;
+  overflow: hidden; /* Prevents content from overflowing the wrapper */
+}
+
+/* Sidebar */
+.sidebar {
+  flex: 0.25;
+  background-color: #2f253e50;;
+  padding: 20px;
+  overflow-y: auto; /* Enables vertical scrolling for the sidebar */
+  max-height: calc(100vh - 85px); /* Limits height based on viewport */
+}
+
+.categoryList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.categoryItem {
+  padding: 15px 0;
+  font-size: 20px;
+  color: #dfcfbd;
+  cursor: pointer;
+  border-bottom: 1px solid #3e2a4e;
+}
+
+.categoryItem:hover {
+  color: #ffffff;
+}
+
+.activeCategory {
+  background-color: #dfcfbd; /* Highlight background */
+  color: #342848; /* Dark text for better contrast */
+  font-weight: bold;
+  padding-left: 10px;
+  border-radius: 10px;
+}
+
+/* Main Content */
+.mainContent {
+  flex: 0.75;
+  padding: 20px;
+  background-color: #1a001f;
+  overflow-y: auto; /* Enables vertical scrolling for the main content area */
+  max-height: calc(100vh - 85px); /* Limits height based on viewport */
+}
+
+/* Grid layout for images with 3 per row */
+.imageGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 images per row */
+  gap: 20px;
+}
+
+.imageGrid img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.imageGrid img:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Search bar */
+.searchContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: width 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.searchBar input {
+  padding: 5px 15px;
+  border: none;
+  border-radius: 30px;
+  width: 300px;
+  height: 40px;
+  color: black;
+  background-color: #DFCFBD;
+}
+
+.searchContainer:hover .searchBar {
+  width: 300px;
+  opacity: 1;
+  right: 0;
+  transform: translateX(-50px);
+}
