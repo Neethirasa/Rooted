@@ -15,7 +15,19 @@
   height: 85px;
 }
 
-.leftSection, .rightSection, .centerSection {
+.leftSection {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.centerSection {
   display: flex;
   align-items: center;
 }
@@ -216,6 +228,7 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
+  padding-left: 20px;
 }
 
 /* Individual menu items */

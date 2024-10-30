@@ -1,10 +1,10 @@
 // src/app/category/wedding-cards/page.tsx
-"use client"
+"use client";
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import styles from '../category.module.css';
-import Link from 'next/link';
 
 const categories = [
   { name: "Wedding Cards", path: "/category/wedding-cards" },
@@ -15,6 +15,9 @@ const categories = [
 
 export default function WeddingCards() {
   const [selectedCategory, setSelectedCategory] = useState("Photo Cards");
+  const [showMenu, setShowMenu] = useState(false);
+  const [searchInput, setSearchInput] = useState('');
+  const [filteredCategories, setFilteredCategories] = useState(categories);
   const router = useRouter();
 
   const handleCategoryClick = (category: { name: string, path: string }) => {
@@ -22,12 +25,36 @@ export default function WeddingCards() {
     router.push(category.path); // Navigate to the selected category page
   };
 
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
+  const handleSearchChange = (e) => {
+    const input = e.target.value.toLowerCase();
+    setSearchInput(input);
+
+    const matches = categories.filter((category) =>
+      category.name.toLowerCase().includes(input)
+    );
+    setFilteredCategories(matches.length > 0 ? matches : categories);
+  };
+
   return (
     <div className={styles.categoryContainer}>
       {/* Header */}
       <header className={styles.header}>
-        <div className={styles.leftSection}>
-          <Image src="/images/menu.svg" alt="Menu Icon" width={50} height={50} />
+        <div
+          className={styles.leftSection}
+          onMouseEnter={toggleMenu}
+          onMouseLeave={() => setShowMenu(false)}
+        >
+          <Image src="/images/menu.svg" alt="Menu Icon" width={50} height={50} onClick={toggleMenu} />
+          {showMenu && (
+            <div className={styles.dropdownMenu}>
+              <Link href="/help" className={styles.menuItem}>Help</Link>
+              <Link href="/contact" className={styles.menuItem}>Contact</Link>
+            </div>
+          )}
         </div>
 
         <div className={styles.centerSection}>
@@ -41,7 +68,12 @@ export default function WeddingCards() {
           <div className={styles.searchContainer}>
             <Image src="/images/search.svg" alt="Search Icon" width={50} height={50} />
             <div className={styles.searchBar}>
-              <input type="text" placeholder="Search..." />
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchInput}
+                onChange={handleSearchChange} // Update search input
+              />
             </div>
           </div>
         </div>
@@ -52,7 +84,7 @@ export default function WeddingCards() {
         {/* Sidebar for Categories */}
         <aside className={styles.sidebar}>
           <ul className={styles.categoryList}>
-            {categories.map((category) => (
+            {filteredCategories.map((category) => (
               <li
                 key={category.name}
                 className={`${styles.categoryItem} ${
@@ -68,7 +100,6 @@ export default function WeddingCards() {
 
         {/* Right side - Display Images in a Grid */}
         <main className={styles.mainContent}>
-          <h1>{selectedCategory}</h1>
           <div className={styles.imageGrid}>
             <Image src="/images/image4.jpeg" alt={`${selectedCategory} 1`} width={150} height={150} />
             <Image src="/images/image2.jpeg" alt={`${selectedCategory} 2`} width={150} height={150} />
