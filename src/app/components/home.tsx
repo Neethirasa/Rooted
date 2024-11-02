@@ -17,24 +17,23 @@ export default function Home() {
   const [searchInput, setSearchInput] = useState('');
   const [filteredCategories, setFilteredCategories] = useState(Object.keys(categories));
 
-  const toggleMenu = () => {
-    setShowMenu(!showMenu);
-  };
+  const toggleMenu = () => setShowMenu(!showMenu);
 
-  // Handle search input change
   const handleSearchChange = (e) => {
     const input = e.target.value.toLowerCase();
     setSearchInput(input);
 
-    // Filter categories based on search input or show all if input is empty or has no matches
-    if (input) {
-      const matches = Object.keys(categories).filter((key) =>
-        categories[key].label.toLowerCase().includes(input)
-      );
-      setFilteredCategories(matches.length > 0 ? matches : Object.keys(categories));
-    } else {
-      setFilteredCategories(Object.keys(categories)); // Reset to all categories
-    }
+    const matches = Object.keys(categories).filter((key) =>
+      categories[key].label.toLowerCase().includes(input)
+    );
+    setFilteredCategories(matches.length > 0 ? matches : Object.keys(categories));
+  };
+
+  // Form submission handler
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // Add form submission logic here, such as sending an email or saving data
+    alert("Inquiry submitted! We'll get back to you soon.");
   };
 
   return (
@@ -51,7 +50,7 @@ export default function Home() {
         </div>
 
         <div className={styles.centerSection}>
-          <Link href="/" className={styles.logoContainer}> {/* Make logo clickable */}
+          <Link href="/" className={styles.logoContainer}>
             <Image src="/images/logo1.png" alt="Company Logo" width={260} height={260} />
             <span className={styles.companyName}></span>
           </Link>
@@ -65,7 +64,7 @@ export default function Home() {
                 type="text"
                 placeholder="Search..."
                 value={searchInput}
-                onChange={handleSearchChange} // Update search input
+                onChange={handleSearchChange}
               />
             </div>
           </div>
@@ -88,7 +87,24 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        <div className={styles.footerContent}></div>
+        <div className={styles.footerContent}>
+          <h3>Contact Us for Pricing</h3>
+          <form className={styles.inquiryForm} onSubmit={handleFormSubmit}>
+            <label>
+              Name:
+              <input type="text" name="name" required />
+            </label>
+            <label>
+              Email:
+              <input type="email" name="email" required />
+            </label>
+            <label>
+              Message:
+              <textarea name="message" rows="3" required placeholder="Let us know which cards you're interested in." />
+            </label>
+            <button type="submit">Submit Inquiry</button>
+          </form>
+        </div>
       </footer>
     </div>
   );

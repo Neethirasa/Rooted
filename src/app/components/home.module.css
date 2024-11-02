@@ -86,6 +86,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 80px;
 }
 
 .imageGrid {
@@ -242,4 +243,52 @@
 .menuItem:hover {
   background-color: #3e2a4e; /* Hover background color */
   border-radius: 3px;
+}
+
+.footerContent {
+  padding: 20px;
+  background-color: #342848;
+  color: #dfcfbd;
+  text-align: center;
+}
+
+.inquiryForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+  gap: 10px;
+}
+
+.inquiryForm label {
+  width: 100%;
+  color: #dfcfbd;
+  font-size: 14px;
+  text-align: left;
+}
+
+.inquiryForm input,
+.inquiryForm textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #dfcfbd;
+  border-radius: 5px;
+  background-color: #1a001f;
+  color: #dfcfbd;
+}
+
+.inquiryForm button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #dfcfbd;
+  color: #342848;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.inquiryForm button:hover {
+  background-color: #bfb1a1;
 }

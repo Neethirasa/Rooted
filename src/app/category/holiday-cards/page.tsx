@@ -13,21 +13,29 @@ const categories = [
   { name: "Photo Cards", path: "/category/photo-cards" }
 ];
 
+const cardDetails = [
+  { src: "/images/h1.png", cost: "$10", sizes: ["4x6", "5x7", "8x10"] },
+  { src: "/images/h2.png", cost: "$12", sizes: ["5x5", "6x6", "7x7"] },
+  { src: "/images/h3.png", cost: "$15", sizes: ["4x4", "5x5", "6x6"] },
+  { src: "/images/h4.png", cost: "$8", sizes: ["3x5", "4x6", "5x7"] },
+  { src: "/images/h5.png", cost: "$9", sizes: ["4x6", "5x7", "6x8"] },
+  { src: "/images/h6.png", cost: "$9", sizes: ["4x6", "5x7", "6x8"] }
+];
+
 export default function WeddingCards() {
   const [selectedCategory, setSelectedCategory] = useState("Holiday Cards");
   const [showMenu, setShowMenu] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [filteredCategories, setFilteredCategories] = useState(categories);
+  const [flippedCards, setFlippedCards] = useState(Array(cardDetails.length).fill(false));
   const router = useRouter();
 
-  const handleCategoryClick = (category: { name: string, path: string }) => {
+  const handleCategoryClick = (category) => {
     setSelectedCategory(category.name);
-    router.push(category.path); // Navigate to the selected category page
+    router.push(category.path);
   };
 
-  const toggleMenu = () => {
-    setShowMenu(!showMenu);
-  };
+  const toggleMenu = () => setShowMenu(!showMenu);
 
   const handleSearchChange = (e) => {
     const input = e.target.value.toLowerCase();
@@ -37,6 +45,14 @@ export default function WeddingCards() {
       category.name.toLowerCase().includes(input)
     );
     setFilteredCategories(matches.length > 0 ? matches : categories);
+  };
+
+  const handleCardFlip = (index) => {
+    setFlippedCards((prev) => {
+      const newFlippedCards = [...prev];
+      newFlippedCards[index] = !newFlippedCards[index];
+      return newFlippedCards;
+    });
   };
 
   return (
@@ -58,7 +74,7 @@ export default function WeddingCards() {
         </div>
 
         <div className={styles.centerSection}>
-          <Link href="/" className={styles.logoContainer}> {/* Make logo clickable */}
+          <Link href="/" className={styles.logoContainer}>
             <Image src="/images/logo1.png" alt="Company Logo" width={260} height={260} />
             <span className={styles.companyName}></span>
           </Link>
@@ -72,7 +88,7 @@ export default function WeddingCards() {
                 type="text"
                 placeholder="Search..."
                 value={searchInput}
-                onChange={handleSearchChange} // Update search input
+                onChange={handleSearchChange}
               />
             </div>
           </div>
@@ -101,12 +117,24 @@ export default function WeddingCards() {
         {/* Right side - Display Images in a Grid */}
         <main className={styles.mainContent}>
           <div className={styles.imageGrid}>
-            <Image src="/images/image2.jpeg" alt={`${selectedCategory} 1`} width={150} height={150} />
-            <Image src="/images/image1.jpeg" alt={`${selectedCategory} 2`} width={150} height={150} />
-            <Image src="/images/image3.jpeg" alt={`${selectedCategory} 3`} width={150} height={150} />
-            <Image src="/images/image4.jpeg" alt={`${selectedCategory} 4`} width={150} height={150} />
-            <Image src="/images/image5.jpeg" alt={`${selectedCategory} 5`} width={150} height={150} />
-            <Image src="/images/image6.jpeg" alt={`${selectedCategory} 6`} width={150} height={150} />
+            {cardDetails.map((card, index) => (
+              <div
+                key={index}
+                className={`${styles.card} ${flippedCards[index] ? styles.flipped : ''}`}
+                onClick={() => handleCardFlip(index)}
+              >
+                {flippedCards[index] ? (
+                  <div className={styles.cardBack}>
+                    <p>Cost: {card.cost}</p>
+                    <p>Sizes: {card.sizes.join(", ")}</p>
+                  </div>
+                ) : (
+                  <div className={styles.cardFront}>
+                    <Image src={card.src} alt={`${selectedCategory} ${index + 1}`} width={150} height={150} />
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </main>
       </div>

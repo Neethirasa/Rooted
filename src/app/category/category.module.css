@@ -1,5 +1,4 @@
-/* src/app/category/category.module.css */
-
+/* Container for the entire category page */
 .categoryContainer {
   display: flex;
   flex-direction: column;
@@ -18,24 +17,14 @@
   height: 85px;
 }
 
-.leftSection {
-  display: flex;
-  align-items: center;
-  padding-left: 10px;
-}
-
-.rightSection {
-  display: flex;
-  align-items: center;
-  padding-right: 10px;
-}
-
-.centerSection {
+.leftSection, .rightSection {
   display: flex;
   align-items: center;
 }
 
 .centerSection {
+  display: flex;
+  align-items: center;
   justify-content: center;
   flex-grow: 1;
 }
@@ -53,16 +42,16 @@
 .contentWrapper {
   display: flex;
   flex-grow: 1;
-  overflow: hidden; /* Prevents content from overflowing the wrapper */
+  overflow: hidden;
 }
 
 /* Sidebar */
 .sidebar {
   flex: 0.25;
-  background-color: #2f253e50;;
+  background-color: #2f253e50;
   padding: 20px;
-  overflow-y: auto; /* Enables vertical scrolling for the sidebar */
-  max-height: calc(100vh - 85px); /* Limits height based on viewport */
+  overflow-y: auto;
+  max-height: calc(100vh - 85px);
 }
 
 .categoryList {
@@ -84,8 +73,8 @@
 }
 
 .activeCategory {
-  background-color: #dfcfbd; /* Highlight background */
-  color: #342848; /* Dark text for better contrast */
+  background-color: #dfcfbd;
+  color: #342848;
   font-weight: bold;
   padding-left: 10px;
   border-radius: 10px;
@@ -96,26 +85,70 @@
   flex: 0.75;
   padding: 20px;
   background-color: #1a001f;
-  overflow-y: auto; /* Enables vertical scrolling for the main content area */
-  max-height: calc(100vh - 85px); /* Limits height based on viewport */
+  overflow-y: auto;
+  max-height: calc(100vh - 85px);
 }
 
-/* Grid layout for images with 3 per row */
+/* Grid layout for images with 2 per row */
 .imageGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 images per row */
+  grid-template-columns: repeat(2, 1fr); /* 2 images per row */
   gap: 20px;
 }
 
-.imageGrid img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  transition: transform 0.2s ease-in-out;
+/* Card with updated size and 3D flip animation */
+.card {
+  width: 350px; /* Fixed width */
+  height: 450px; /* Fixed height */
+  perspective: 1000px; /* Creates 3D perspective */
+  position: relative;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.6s; /* Smooth flip transition */
 }
 
-.imageGrid img:hover {
-  transform: scale(1.05); /* Slight zoom effect on hover */
+/* Card faces with backface visibility hidden */
+.cardFront, .cardBack {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  backface-visibility: hidden; /* Prevents the back from showing through */
+  overflow: hidden;
+}
+
+/* Front side of the card */
+.cardFront {
+  background-color: #342848;
+  transform: rotateY(0deg); /* Default front position */
+}
+
+.cardFront img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the card without stretching */
+  border-radius: 10px;
+}
+
+/* Back side of the card with information */
+.cardBack {
+  background-color: #342848;
+  color: #dfcfbd;
+  transform: rotateY(180deg); /* Hidden initially */
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+/* When the card is flipped, rotate it 180deg */
+.flipped {
+  transform: rotateY(180deg);
 }
 
 /* Search bar */
@@ -156,9 +189,9 @@
 /* Dropdown menu container */
 .dropdownMenu {
   position: absolute;
-  top: 70px; /* Position below the menu icon */
+  top: 70px;
   left: 0;
-  background-color: #342848; /* Background color */
+  background-color: #342848;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -169,13 +202,20 @@
 
 /* Individual menu items */
 .menuItem {
-  color: #dfcfbd; /* Text color */
+  color: #dfcfbd;
   padding: 8px 12px;
   text-decoration: none;
   cursor: pointer;
 }
 
 .menuItem:hover {
-  background-color: #3e2a4e; /* Hover background color */
+  background-color: #3e2a4e;
   border-radius: 3px;
+}
+
+.footerContent {
+  padding: 20px;
+  background-color: #342848;
+  color: #dfcfbd;
+  text-align: center;
 }
