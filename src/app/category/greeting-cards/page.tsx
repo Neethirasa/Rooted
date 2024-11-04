@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState, ChangeEvent, MouseEvent } from 'react';
+import { useState, ChangeEvent } from 'react';
 import styles from '../category.module.css';
 
 type Category = {
