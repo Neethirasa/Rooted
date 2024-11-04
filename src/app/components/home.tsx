@@ -2,10 +2,16 @@
 "use client";
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, ChangeEvent, FormEvent } from 'react';
 import styles from './home.module.css';
 
-const categories = {
+type Category = {
+  label: string;
+  images: string[];
+  path: string;
+};
+
+const categories: Record<string, Category> = {
   A: { label: 'Wedding Cards', images: ['/images/image1.jpeg', '/images/image2.jpeg', '/images/image3.jpeg'], path: '/category/wedding-cards' },
   B: { label: 'Holiday Cards', images: ['/images/image2.jpeg', '/images/image5.jpeg', '/images/image6.jpeg'], path: '/category/holiday-cards' },
   C: { label: 'Greeting Cards', images: ['/images/image3.jpeg', '/images/image8.jpeg', '/images/image9.jpeg'], path: '/category/greeting-cards' },
@@ -15,11 +21,11 @@ const categories = {
 export default function Home() {
   const [showMenu, setShowMenu] = useState(false);
   const [searchInput, setSearchInput] = useState('');
-  const [filteredCategories, setFilteredCategories] = useState(Object.keys(categories));
+  const [filteredCategories, setFilteredCategories] = useState<string[]>(Object.keys(categories));
 
   const toggleMenu = () => setShowMenu(!showMenu);
 
-  const handleSearchChange = (e) => {
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     const input = e.target.value.toLowerCase();
     setSearchInput(input);
 
@@ -30,9 +36,8 @@ export default function Home() {
   };
 
   // Form submission handler
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Add form submission logic here, such as sending an email or saving data
     alert("Inquiry submitted! We'll get back to you soon.");
   };
 
@@ -73,14 +78,14 @@ export default function Home() {
 
       <main className={styles.main}>
         <div className={styles.imageGrid}>
-          {filteredCategories.map((category) => (
+          {filteredCategories.map((categoryKey) => (
             <Link
-              key={category}
-              href={categories[category].path}
+              key={categoryKey}
+              href={categories[categoryKey].path}
               className={styles.imageItem}
             >
-              <Image src={categories[category].images[0]} alt={`${categories[category].label} Category`} width={325} height={300} />
-              <span className={styles.imageLabel}>{categories[category].label}</span>
+              <Image src={categories[categoryKey].images[0]} alt={`${categories[categoryKey].label} Category`} width={325} height={300} />
+              <span className={styles.imageLabel}>{categories[categoryKey].label}</span>
             </Link>
           ))}
         </div>
@@ -89,21 +94,31 @@ export default function Home() {
       <footer className={styles.footer}>
         <div className={styles.footerContent}>
           <h3>Contact Us for Pricing</h3>
-          <form className={styles.inquiryForm} onSubmit={handleFormSubmit}>
-            <label>
-              Name:
-              <input type="text" name="name" required />
-            </label>
-            <label>
-              Email:
-              <input type="email" name="email" required />
-            </label>
-            <label>
-              Message:
-              <textarea name="message" rows="3" required placeholder="Let us know which cards you're interested in." />
-            </label>
-            <button type="submit">Submit Inquiry</button>
-          </form>
+          <div className={styles.contactWrapper}>
+            {/* Inquiry Form */}
+            <form className={styles.inquiryForm} onSubmit={handleFormSubmit}>
+              <label>
+                Name:
+                <input type="text" name="name" required />
+              </label>
+              <label>
+                Email:
+                <input type="email" name="email" required />
+              </label>
+              <label>
+                Message:
+                <textarea name="message" rows={3} required placeholder="Let us know which cards you're interested in." />
+              </label>
+              <button type="submit">Submit Inquiry</button>
+            </form>
+
+            {/* Contact Information */}
+            <div className={styles.contactInfo}>
+              <h4>Contact Dhanu</h4>
+              <p>Phone: +1 423 234 234</p>
+              <p>Email: <a href="mailto:dhanupaper@gmail.com">dhanupaper@gmail.com</a></p>
+            </div>
+          </div>
         </div>
       </footer>
     </div>

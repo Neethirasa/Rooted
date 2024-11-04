@@ -3,17 +3,28 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, ChangeEvent } from 'react';
 import styles from '../category.module.css';
 
-const categories = [
+type Category = {
+  name: string;
+  path: string;
+};
+
+type CardDetail = {
+  src: string;
+  cost: string;
+  sizes: string[];
+};
+
+const categories: Category[] = [
   { name: "Wedding Cards", path: "/category/wedding-cards" },
   { name: "Holiday Cards", path: "/category/holiday-cards" },
   { name: "Greeting Cards", path: "/category/greeting-cards" },
   { name: "Photo Cards", path: "/category/photo-cards" }
 ];
 
-const cardDetails = [
+const cardDetails: CardDetail[] = [
   { src: "/images/h1.png", cost: "$10", sizes: ["4x6", "5x7", "8x10"] },
   { src: "/images/h2.png", cost: "$12", sizes: ["5x5", "6x6", "7x7"] },
   { src: "/images/h3.png", cost: "$15", sizes: ["4x4", "5x5", "6x6"] },
@@ -23,21 +34,21 @@ const cardDetails = [
 ];
 
 export default function WeddingCards() {
-  const [selectedCategory, setSelectedCategory] = useState("Photo Cards");
-  const [showMenu, setShowMenu] = useState(false);
-  const [searchInput, setSearchInput] = useState('');
-  const [filteredCategories, setFilteredCategories] = useState(categories);
-  const [flippedCards, setFlippedCards] = useState(Array(cardDetails.length).fill(false));
+  const [selectedCategory, setSelectedCategory] = useState<string>("Photo Cards");
+  const [showMenu, setShowMenu] = useState<boolean>(false);
+  const [searchInput, setSearchInput] = useState<string>('');
+  const [filteredCategories, setFilteredCategories] = useState<Category[]>(categories);
+  const [flippedCards, setFlippedCards] = useState<boolean[]>(Array(cardDetails.length).fill(false));
   const router = useRouter();
 
-  const handleCategoryClick = (category) => {
+  const handleCategoryClick = (category: Category): void => {
     setSelectedCategory(category.name);
     router.push(category.path);
   };
 
-  const toggleMenu = () => setShowMenu(!showMenu);
+  const toggleMenu = (): void => setShowMenu(!showMenu);
 
-  const handleSearchChange = (e) => {
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const input = e.target.value.toLowerCase();
     setSearchInput(input);
 
@@ -47,7 +58,7 @@ export default function WeddingCards() {
     setFilteredCategories(matches.length > 0 ? matches : categories);
   };
 
-  const handleCardFlip = (index) => {
+  const handleCardFlip = (index: number): void => {
     setFlippedCards((prev) => {
       const newFlippedCards = [...prev];
       newFlippedCards[index] = !newFlippedCards[index];
