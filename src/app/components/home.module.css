@@ -1,4 +1,3 @@
-/* src/app/page.module.css */
 .container {
   display: flex;
   flex-direction: column;
@@ -30,17 +29,20 @@
 .centerSection {
   display: flex;
   align-items: center;
-}
-
-.centerSection {
   justify-content: center;
   flex-grow: 1;
+  transition: opacity 0.3s ease; /* Smooth logo visibility transitions */
+}
+
+.centerSection.hidden {
+  opacity: 0; /* Hide logo */
+  pointer-events: none; /* Prevent interactions */
 }
 
 .logoContainer img {
   width: 260px;
   height: auto;
-  transition: all 0.3s ease; /* Smooth transition for size change */
+  transition: all 0.3s ease; /* Smooth transition for size changes */
 }
 
 @media (max-width: 768px) {
@@ -68,7 +70,7 @@
   width: 0;
   opacity: 0;
   overflow: hidden;
-  transition: width 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  transition: width 0.3s ease, opacity 0.3s ease;
   padding-bottom: 5px;
 }
 
@@ -82,11 +84,10 @@
   background-color: #DFCFBD;
 }
 
-.searchContainer:hover .searchBar {
+.searchContainer:hover .searchBar,
+.searchBar input:focus {
   width: 300px;
   opacity: 1;
-  right: 0;
-  transform: translateX(-50px);
 }
 
 .main {
@@ -143,6 +144,7 @@
     font-size: 16px; /* Slightly smaller text on smaller screens */
   }
 }
+
 /* Modal styles */
 .modal {
   display: flex;
@@ -207,7 +209,6 @@
   border-radius: 10px;
   cursor: pointer;
   transition: transform 0.2s ease;
-  border-radius: 10px;
   padding-left: 100px;
   padding-right: 100px;
 }
@@ -239,8 +240,6 @@
   color: #000;
   cursor: pointer;
 }
-
-/* src/app/home.module.css */
 
 /* Dropdown menu container */
 .dropdownMenu {
@@ -277,84 +276,12 @@
   text-align: center;
 }
 
-/* Footer Content */
 .footerContent {
   max-width: 900px;
   margin: 0 auto;
 }
 
-/* Wrapper for form and contact info side by side */
-.contactWrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-/* Inquiry Form Styling */
-.inquiryForm {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 400px;
-}
-
-.inquiryForm label {
-  color: #dfcfbd;
-  font-size: 14px;
-  text-align: left;
-}
-
-.inquiryForm input,
-.inquiryForm textarea {
-  width: 400px;
-  padding: 8px;
-  border: 1px solid #dfcfbd;
-  border-radius: 5px;
-  background-color: #1a001f;
-  color: #dfcfbd;
-}
-
-.inquiryForm button {
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #dfcfbd;
-  color: #342848;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.inquiryForm button:hover {
-  background-color: #bfb1a1;
-}
-
-/* Contact Information Styling */
-.contactInfo {
-  max-width: 300px;
-  text-align: left;
-}
-
-.contactInfo h4 {
-  margin-bottom: 8px;
-  color: #dfcfbd;
-}
-
-.contactInfo p {
-  margin: 4px 0;
-}
-
-.contactInfo a {
-  color: #dfcfbd;
-  text-decoration: none;
-}
-
-.contactInfo a:hover {
-  text-decoration: underline;
-}
-
-/* Responsive Layout */
+/* Responsive Footer Layout */
 @media (max-width: 768px) {
   .contactWrapper {
     flex-direction: column;

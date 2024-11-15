@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent } from "react";
 import styles from "./home.module.css";
 
 // Define category types
@@ -22,7 +22,7 @@ export default function Home() {
   const [showMenu, setShowMenu] = useState(false); // State for dropdown menu
   const [searchInput, setSearchInput] = useState(""); // State for search input
   const [filteredCategories, setFilteredCategories] = useState<string[]>(Object.keys(categories)); // Filtered categories
-  const [showLogo, setShowLogo] = useState(true); // State to manage logo visibility
+  const [isSearchActive, setIsSearchActive] = useState(false); // State to manage logo visibility
 
   // Toggle dropdown menu visibility
   const toggleMenu = () => setShowMenu(!showMenu);
@@ -38,19 +38,9 @@ export default function Home() {
     setFilteredCategories(matches.length > 0 ? matches : Object.keys(categories));
   };
 
-  // Handle search button click
-  const handleSearchClick = () => {
-    if (window.innerWidth <= 768) {
-      setShowLogo(false); // Hide logo on small screens
-    }
-  };
-
-  // Handle search blur
-  const handleSearchBlur = () => {
-    if (window.innerWidth <= 768) {
-      setShowLogo(true); // Show logo again on small screens
-    }
-  };
+  // Handle search activation and deactivation
+  const handleSearchClick = () => setIsSearchActive(true);
+  const handleSearchBlur = () => setIsSearchActive(false);
 
   return (
     <div className={styles.container}>
@@ -68,7 +58,7 @@ export default function Home() {
         </div>
 
         {/* Center Section - Logo */}
-        {showLogo && (
+        {!isSearchActive && (
           <div className={styles.centerSection}>
             <Link href="/" className={styles.logoContainer}>
               <Image src="/images/logo1.png" alt="Company Logo" width={260} height={260} />
@@ -92,8 +82,8 @@ export default function Home() {
                 type="text"
                 placeholder="Search..."
                 value={searchInput}
-                onFocus={handleSearchClick} // Optional: hide logo when focusing the input
-                onBlur={handleSearchBlur}
+                onFocus={handleSearchClick} // Hide logo on focus
+                onBlur={handleSearchBlur} // Show logo on blur
                 onChange={handleSearchChange}
               />
             </div>
@@ -116,38 +106,6 @@ export default function Home() {
           ))}
         </div>
       </main>
-
-      {/* Footer Section */}
-      <footer className={styles.footer}>
-        <div className={styles.footerContent}>
-          <h3>Contact Us for Pricing</h3>
-          <div className={styles.contactWrapper}>
-            {/* Inquiry Form */}
-            <form className={styles.inquiryForm} onSubmit={(e: FormEvent<HTMLFormElement>) => e.preventDefault()}>
-              <label>
-                Name:
-                <input type="text" name="name" required />
-              </label>
-              <label>
-                Email:
-                <input type="email" name="email" required />
-              </label>
-              <label>
-                Message:
-                <textarea name="message" rows={3} required placeholder="Let us know which cards you're interested in." />
-              </label>
-              <button type="submit">Submit Inquiry</button>
-            </form>
-
-            {/* Contact Information */}
-            <div className={styles.contactInfo}>
-              <h4>Contact Dhanu</h4>
-              <p>Phone: +1 423 234 234</p>
-              <p>Email: <a href="mailto:dhanupaper@gmail.com">dhanupaper@gmail.com</a></p>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
