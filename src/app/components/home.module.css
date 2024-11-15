@@ -93,13 +93,7 @@
   display: flex;
   gap: 20px;
   transition: transform 0.2s ease-in-out;
-}
-
-.imageGrid img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  transition: transform 0.2s ease-in-out;
+  flex-wrap: wrap; /* Ensures items wrap on smaller screens */
 }
 
 .imageItem {
@@ -109,7 +103,7 @@
   cursor: pointer;
   padding: 0;
   overflow: hidden;
-  width: 325px;
+  width: 325px; /* Default width for desktop */
   text-align: center;
   background-color: transparent;
   border-radius: 10px;
@@ -123,6 +117,23 @@
 
 .imageGrid img:hover {
   transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Responsive layout for phones */
+@media (max-width: 768px) {
+  .imageGrid {
+    flex-direction: column; /* Stacks images vertically */
+    align-items: center; /* Centers images */
+  }
+
+  .imageItem {
+    width: 100%; /* Full width for images on phones */
+    max-width: 500px; /* Optional max-width to constrain image size */
+  }
+
+  .imageLabel {
+    font-size: 16px; /* Slightly smaller text on smaller screens */
+  }
 }
 /* Modal styles */
 .modal {

@@ -22,6 +22,7 @@ export default function Home() {
   const [showMenu, setShowMenu] = useState(false); // State for dropdown menu
   const [searchInput, setSearchInput] = useState(""); // State for search input
   const [filteredCategories, setFilteredCategories] = useState<string[]>(Object.keys(categories)); // Filtered categories
+  const [showLogo, setShowLogo] = useState(true); // State to manage logo visibility
 
   // Toggle dropdown menu visibility
   const toggleMenu = () => setShowMenu(!showMenu);
@@ -37,10 +38,18 @@ export default function Home() {
     setFilteredCategories(matches.length > 0 ? matches : Object.keys(categories));
   };
 
-  // Form submission handler
-  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    alert("Inquiry submitted! We'll get back to you soon.");
+  // Handle search focus
+  const handleSearchFocus = () => {
+    if (window.innerWidth <= 768) {
+      setShowLogo(false);
+    }
+  };
+
+  // Handle search blur
+  const handleSearchBlur = () => {
+    if (window.innerWidth <= 768) {
+      setShowLogo(true);
+    }
   };
 
   return (
@@ -59,12 +68,14 @@ export default function Home() {
         </div>
 
         {/* Center Section - Logo */}
-        <div className={styles.centerSection}>
-          <Link href="/" className={styles.logoContainer}>
-            <Image src="/images/logo1.png" alt="Company Logo" width={260} height={260} />
-            <span className={styles.companyName}></span>
-          </Link>
-        </div>
+        {showLogo && (
+          <div className={styles.centerSection}>
+            <Link href="/" className={styles.logoContainer}>
+              <Image src="/images/logo1.png" alt="Company Logo" width={260} height={260} />
+              <span className={styles.companyName}></span>
+            </Link>
+          </div>
+        )}
 
         {/* Right Section - Search Bar */}
         <div className={styles.rightSection}>
@@ -75,6 +86,8 @@ export default function Home() {
                 type="text"
                 placeholder="Search..."
                 value={searchInput}
+                onFocus={handleSearchFocus}
+                onBlur={handleSearchBlur}
                 onChange={handleSearchChange}
               />
             </div>
@@ -104,7 +117,7 @@ export default function Home() {
           <h3>Contact Us for Pricing</h3>
           <div className={styles.contactWrapper}>
             {/* Inquiry Form */}
-            <form className={styles.inquiryForm} onSubmit={handleFormSubmit}>
+            <form className={styles.inquiryForm} onSubmit={(e: FormEvent<HTMLFormElement>) => e.preventDefault()}>
               <label>
                 Name:
                 <input type="text" name="name" required />
