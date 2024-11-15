@@ -1,30 +1,32 @@
-// src/app/Home.tsx
 "use client";
-import Image from 'next/image';
-import Link from 'next/link';
-import { useState, ChangeEvent, FormEvent } from 'react';
-import styles from './home.module.css';
+import Image from "next/image";
+import Link from "next/link";
+import { useState, ChangeEvent, FormEvent } from "react";
+import styles from "./home.module.css";
 
+// Define category types
 type Category = {
   label: string;
   images: string[];
   path: string;
 };
 
+// Define categories data
 const categories: Record<string, Category> = {
-  A: { label: 'Wedding Cards', images: ['/images/image1.jpeg', '/images/image2.jpeg', '/images/image3.jpeg'], path: '/category/wedding-cards' },
-  B: { label: 'Holiday Cards', images: ['/images/image2.jpeg', '/images/image5.jpeg', '/images/image6.jpeg'], path: '/category/holiday-cards' },
-  C: { label: 'Other Cards', images: ['/images/image3.jpeg', '/images/image8.jpeg', '/images/image9.jpeg'], path: '/category/greeting-cards' },
-  //D: { label: 'Photo Cards', images: ['/images/image4.jpeg', '/images/image11.jpeg', '/images/image12.jpeg'], path: '/category/photo-cards' }
+  A: { label: "Wedding Cards", images: ["/images/image1.jpeg", "/images/image2.jpeg", "/images/image3.jpeg"], path: "/category/wedding-cards" },
+  B: { label: "Holiday Cards", images: ["/images/image2.jpeg", "/images/image5.jpeg", "/images/image6.jpeg"], path: "/category/holiday-cards" },
+  C: { label: "Other Cards", images: ["/images/image3.jpeg", "/images/image8.jpeg", "/images/image9.jpeg"], path: "/category/greeting-cards" },
 };
 
 export default function Home() {
-  const [showMenu, setShowMenu] = useState(false);
-  const [searchInput, setSearchInput] = useState('');
-  const [filteredCategories, setFilteredCategories] = useState<string[]>(Object.keys(categories));
+  const [showMenu, setShowMenu] = useState(false); // State for dropdown menu
+  const [searchInput, setSearchInput] = useState(""); // State for search input
+  const [filteredCategories, setFilteredCategories] = useState<string[]>(Object.keys(categories)); // Filtered categories
 
+  // Toggle dropdown menu visibility
   const toggleMenu = () => setShowMenu(!showMenu);
 
+  // Handle search input change
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     const input = e.target.value.toLowerCase();
     setSearchInput(input);
@@ -43,7 +45,9 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      {/* Header Section */}
       <header className={styles.header}>
+        {/* Left Section - Menu Icon */}
         <div className={styles.leftSection} onMouseEnter={toggleMenu} onMouseLeave={() => setShowMenu(false)}>
           <Image src="/images/menu.svg" alt="Menu Icon" width={50} height={50} onClick={toggleMenu} />
           {showMenu && (
@@ -54,6 +58,7 @@ export default function Home() {
           )}
         </div>
 
+        {/* Center Section - Logo */}
         <div className={styles.centerSection}>
           <Link href="/" className={styles.logoContainer}>
             <Image src="/images/logo1.png" alt="Company Logo" width={260} height={260} />
@@ -61,6 +66,7 @@ export default function Home() {
           </Link>
         </div>
 
+        {/* Right Section - Search Bar */}
         <div className={styles.rightSection}>
           <div className={styles.searchContainer}>
             <Image src="/images/search.svg" alt="Search Icon" width={50} height={50} />
@@ -76,6 +82,7 @@ export default function Home() {
         </div>
       </header>
 
+      {/* Main Content */}
       <main className={styles.main}>
         <div className={styles.imageGrid}>
           {filteredCategories.map((categoryKey) => (
@@ -91,6 +98,7 @@ export default function Home() {
         </div>
       </main>
 
+      {/* Footer Section */}
       <footer className={styles.footer}>
         <div className={styles.footerContent}>
           <h3>Contact Us for Pricing</h3>
