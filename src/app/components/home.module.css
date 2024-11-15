@@ -31,18 +31,18 @@
   align-items: center;
   justify-content: center;
   flex-grow: 1;
-  transition: opacity 0.3s ease; /* Smooth logo visibility transitions */
+  transition: opacity 0.3s ease;
 }
 
 .centerSection.hidden {
-  opacity: 0; /* Hide logo */
-  pointer-events: none; /* Prevent interactions */
+  opacity: 0;
+  pointer-events: none;
 }
 
 .logoContainer img {
   width: 260px;
   height: auto;
-  transition: all 0.3s ease; /* Smooth transition for size changes */
+  transition: all 0.3s ease; /* Smooth transition for size change */
 }
 
 @media (max-width: 768px) {
@@ -70,7 +70,7 @@
   width: 0;
   opacity: 0;
   overflow: hidden;
-  transition: width 0.3s ease, opacity 0.3s ease;
+  transition: width 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
   padding-bottom: 5px;
 }
 
@@ -84,10 +84,11 @@
   background-color: #DFCFBD;
 }
 
-.searchContainer:hover .searchBar,
-.searchBar input:focus {
+.searchContainer:hover .searchBar {
   width: 300px;
   opacity: 1;
+  right: 0;
+  transform: translateX(-50px);
 }
 
 .main {
@@ -142,6 +143,10 @@
 
   .imageLabel {
     font-size: 16px; /* Slightly smaller text on smaller screens */
+  }
+
+  .centerSection.hidden {
+    display: none; /* Fully hide the logo on mobile when active */
   }
 }
 
@@ -266,29 +271,4 @@
 .menuItem:hover {
   background-color: #3e2a4e; /* Hover background color */
   border-radius: 3px;
-}
-
-/* Footer Container */
-.footer {
-  padding: 20px;
-  background-color: #342848;
-  color: #dfcfbd;
-  text-align: center;
-}
-
-.footerContent {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-/* Responsive Footer Layout */
-@media (max-width: 768px) {
-  .contactWrapper {
-    flex-direction: column;
-    align-items: center;
-  }
-  .contactInfo, .inquiryForm {
-    max-width: 100%;
-    text-align: center;
-  }
 }

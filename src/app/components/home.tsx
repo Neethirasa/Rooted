@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, ChangeEvent } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import styles from "./home.module.css";
 
 // Define category types
@@ -23,6 +23,15 @@ export default function Home() {
   const [searchInput, setSearchInput] = useState(""); // State for search input
   const [filteredCategories, setFilteredCategories] = useState<string[]>(Object.keys(categories)); // Filtered categories
   const [isSearchActive, setIsSearchActive] = useState(false); // State to manage logo visibility
+  const [isMobile, setIsMobile] = useState(false); // State to check if the device is mobile
+
+  // Check if the device is mobile
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize(); // Initial check
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Toggle dropdown menu visibility
   const toggleMenu = () => setShowMenu(!showMenu);
@@ -39,8 +48,12 @@ export default function Home() {
   };
 
   // Handle search activation and deactivation
-  const handleSearchClick = () => setIsSearchActive(true);
-  const handleSearchBlur = () => setIsSearchActive(false);
+  const handleSearchClick = () => {
+    if (isMobile) setIsSearchActive(true);
+  };
+  const handleSearchBlur = () => {
+    if (isMobile) setIsSearchActive(false);
+  };
 
   return (
     <div className={styles.container}>
