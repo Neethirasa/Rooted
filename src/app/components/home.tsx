@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, ChangeEvent } from "react";
 import styles from "./home.module.css";
 
 // Define category types
@@ -22,16 +22,7 @@ export default function Home() {
   const [showMenu, setShowMenu] = useState(false); // State for dropdown menu
   const [searchInput, setSearchInput] = useState(""); // State for search input
   const [filteredCategories, setFilteredCategories] = useState<string[]>(Object.keys(categories)); // Filtered categories
-  const [isSearchActive, setIsSearchActive] = useState(false); // State to manage logo visibility
-  const [isMobile, setIsMobile] = useState(false); // State to check if the device is mobile
-
-  // Check if the device is mobile
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    handleResize(); // Initial check
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const [isSearchActive, setIsSearchActive] = useState(false); // State to manage visibility of header elements
 
   // Toggle dropdown menu visibility
   const toggleMenu = () => setShowMenu(!showMenu);
@@ -47,18 +38,20 @@ export default function Home() {
     setFilteredCategories(matches.length > 0 ? matches : Object.keys(categories));
   };
 
-  // Handle search activation and deactivation
+  // Handle search activation
   const handleSearchClick = () => {
-    if (isMobile) setIsSearchActive(true);
+    if (window.innerWidth <= 768) {
+      setIsSearchActive(true); // Hide the header elements on phones
+    }
   };
-  const handleSearchBlur = () => {
-    if (isMobile) setIsSearchActive(false);
-  };
+
+  // Handle search deactivation
+  const handleSearchBlur = () => setIsSearchActive(false);
 
   return (
     <div className={styles.container}>
       {/* Header Section */}
-      <header className={styles.header}>
+      <header className={`${styles.header} ${isSearchActive ? styles.hidden : ""}`}>
         {/* Left Section - Menu Icon */}
         <div className={styles.leftSection} onMouseEnter={toggleMenu} onMouseLeave={() => setShowMenu(false)}>
           <Image src="/images/menu.svg" alt="Menu Icon" width={50} height={50} onClick={toggleMenu} />
@@ -71,14 +64,12 @@ export default function Home() {
         </div>
 
         {/* Center Section - Logo */}
-        {!isSearchActive && (
-          <div className={styles.centerSection}>
-            <Link href="/" className={styles.logoContainer}>
-              <Image src="/images/logo1.png" alt="Company Logo" width={260} height={260} />
-              <span className={styles.companyName}></span>
-            </Link>
-          </div>
-        )}
+        <div className={styles.centerSection}>
+          <Link href="/" className={styles.logoContainer}>
+            <Image src="/images/logo1.png" alt="Company Logo" width={260} height={260} />
+            <span className={styles.companyName}></span>
+          </Link>
+        </div>
 
         {/* Right Section - Search Bar */}
         <div className={styles.rightSection}>
@@ -88,15 +79,15 @@ export default function Home() {
               alt="Search Icon"
               width={50}
               height={50}
-              onClick={handleSearchClick} // Trigger logo disappearance on click
+              onClick={handleSearchClick} // Trigger hiding header elements on click
             />
             <div className={styles.searchBar}>
               <input
                 type="text"
                 placeholder="Search..."
                 value={searchInput}
-                onFocus={handleSearchClick} // Hide logo on focus
-                onBlur={handleSearchBlur} // Show logo on blur
+                onFocus={handleSearchClick} // Hide header elements on focus
+                onBlur={handleSearchBlur} // Show header elements on blur
                 onChange={handleSearchChange}
               />
             </div>

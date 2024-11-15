@@ -1,3 +1,4 @@
+/* General Container */
 .container {
   display: flex;
   flex-direction: column;
@@ -5,6 +6,7 @@
   background-color: #1a001f;
 }
 
+/* Header Section */
 .header {
   display: flex;
   justify-content: space-between;
@@ -12,31 +14,21 @@
   padding: 20px;
   background-color: #342848;
   height: 85px;
+  transition: opacity 0.3s ease;
 }
 
-.leftSection {
-  display: flex;
-  align-items: center;
-  padding-left: 10px;
+/* Hide Header (Logo and Menu Bar) */
+.header.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
-.rightSection {
-  display: flex;
-  align-items: center;
-  padding-right: 10px;
-}
-
+/* Center Section (Logo) */
 .centerSection {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-grow: 1;
-  transition: opacity 0.3s ease;
-}
-
-.centerSection.hidden {
-  opacity: 0;
-  pointer-events: none;
 }
 
 .logoContainer img {
@@ -51,11 +43,14 @@
   }
 }
 
-.companyName {
-  font-size: 24px;
-  color: #DFCFBD;
+/* Menu Section */
+.leftSection {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
 }
 
+/* Search Container */
 .searchContainer {
   display: flex;
   align-items: center;
@@ -71,7 +66,6 @@
   opacity: 0;
   overflow: hidden;
   transition: width 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
-  padding-bottom: 5px;
 }
 
 .searchBar input {
@@ -89,6 +83,13 @@
   opacity: 1;
   right: 0;
   transform: translateX(-50px);
+}
+
+/* Responsive for phones */
+@media (max-width: 768px) {
+  .header.hidden {
+    display: none; /* Completely hide the header on phones */
+  }
 }
 
 .main {
