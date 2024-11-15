@@ -4,14 +4,12 @@ import Link from "next/link";
 import { useState, ChangeEvent } from "react";
 import styles from "./home.module.css";
 
-// Define category types
 type Category = {
   label: string;
   images: string[];
   path: string;
 };
 
-// Define categories data
 const categories: Record<string, Category> = {
   A: { label: "Wedding Cards", images: ["/images/image1.jpeg", "/images/image2.jpeg", "/images/image3.jpeg"], path: "/category/wedding-cards" },
   B: { label: "Holiday Cards", images: ["/images/image2.jpeg", "/images/image5.jpeg", "/images/image6.jpeg"], path: "/category/holiday-cards" },
@@ -22,12 +20,10 @@ export default function Home() {
   const [showMenu, setShowMenu] = useState(false); // State for dropdown menu
   const [searchInput, setSearchInput] = useState(""); // State for search input
   const [filteredCategories, setFilteredCategories] = useState<string[]>(Object.keys(categories)); // Filtered categories
-  const [isSearchActive, setIsSearchActive] = useState(false); // State to manage visibility of header elements
+  const [isSearchActive, setIsSearchActive] = useState(false); // State to manage header visibility
 
-  // Toggle dropdown menu visibility
   const toggleMenu = () => setShowMenu(!showMenu);
 
-  // Handle search input change
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     const input = e.target.value.toLowerCase();
     setSearchInput(input);
@@ -38,15 +34,13 @@ export default function Home() {
     setFilteredCategories(matches.length > 0 ? matches : Object.keys(categories));
   };
 
-  // Handle search activation
   const handleSearchClick = () => {
     if (window.innerWidth <= 768) {
-      setIsSearchActive(true); // Hide the header elements on phones
+      setIsSearchActive(true); // Hide the header on small screens
     }
   };
 
-  // Handle search deactivation
-  const handleSearchBlur = () => setIsSearchActive(false);
+  const handleSearchBlur = () => setIsSearchActive(false); // Show the header again on small screens
 
   return (
     <div className={styles.container}>
@@ -79,15 +73,15 @@ export default function Home() {
               alt="Search Icon"
               width={50}
               height={50}
-              onClick={handleSearchClick} // Trigger hiding header elements on click
+              onClick={handleSearchClick}
             />
             <div className={styles.searchBar}>
               <input
                 type="text"
                 placeholder="Search..."
                 value={searchInput}
-                onFocus={handleSearchClick} // Hide header elements on focus
-                onBlur={handleSearchBlur} // Show header elements on blur
+                onFocus={handleSearchClick}
+                onBlur={handleSearchBlur}
                 onChange={handleSearchChange}
               />
             </div>
