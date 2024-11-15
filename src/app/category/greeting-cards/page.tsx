@@ -14,8 +14,8 @@ type Category = {
 const categories: Category[] = [
   { name: "Wedding Cards", path: "/category/wedding-cards" },
   { name: "Holiday Cards", path: "/category/holiday-cards" },
-  { name: "Greeting Cards", path: "/category/greeting-cards" },
-  { name: "Photo Cards", path: "/category/photo-cards" }
+  { name: "Other Cards", path: "/category/greeting-cards" },
+  //{ name: "Photo Cards", path: "/category/photo-cards" }
 ];
 
 type CardDetails = {
@@ -25,16 +25,14 @@ type CardDetails = {
 };
 
 const cardDetails: CardDetails[] = [
-  { src: "/images/h1.png", cost: "$10", sizes: ["4x6", "5x7", "8x10"] },
-  { src: "/images/h2.png", cost: "$12", sizes: ["5x5", "6x6", "7x7"] },
-  { src: "/images/h3.png", cost: "$15", sizes: ["4x4", "5x5", "6x6"] },
-  { src: "/images/h4.png", cost: "$8", sizes: ["3x5", "4x6", "5x7"] },
-  { src: "/images/h5.png", cost: "$9", sizes: ["4x6", "5x7", "6x8"] },
-  { src: "/images/h6.png", cost: "$9", sizes: ["4x6", "5x7", "6x8"] }
+  { src: "/images/o1.png", cost: "$15", sizes: ["4x4", "5x5", "6x6"] },
+  { src: "/images/o3.png", cost: "$15", sizes: ["4x4", "5x5", "6x6"] },
+  { src: "/images/o4.png", cost: "$8", sizes: ["3x5", "4x6", "5x7"] },
+  { src: "/images/o5.jpeg", cost: "$9", sizes: ["4x6", "5x7", "6x8"] }
 ];
 
 export default function WeddingCards() {
-  const [selectedCategory, setSelectedCategory] = useState<string>("Greeting Cards");
+  const [selectedCategory, setSelectedCategory] = useState<string>("Other Cards");
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const [searchInput, setSearchInput] = useState<string>('');
   const [filteredCategories, setFilteredCategories] = useState<Category[]>(categories);

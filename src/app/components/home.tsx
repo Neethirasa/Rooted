@@ -14,8 +14,8 @@ type Category = {
 const categories: Record<string, Category> = {
   A: { label: 'Wedding Cards', images: ['/images/image1.jpeg', '/images/image2.jpeg', '/images/image3.jpeg'], path: '/category/wedding-cards' },
   B: { label: 'Holiday Cards', images: ['/images/image2.jpeg', '/images/image5.jpeg', '/images/image6.jpeg'], path: '/category/holiday-cards' },
-  C: { label: 'Greeting Cards', images: ['/images/image3.jpeg', '/images/image8.jpeg', '/images/image9.jpeg'], path: '/category/greeting-cards' },
-  D: { label: 'Photo Cards', images: ['/images/image4.jpeg', '/images/image11.jpeg', '/images/image12.jpeg'], path: '/category/photo-cards' }
+  C: { label: 'Other Cards', images: ['/images/image3.jpeg', '/images/image8.jpeg', '/images/image9.jpeg'], path: '/category/greeting-cards' },
+  //D: { label: 'Photo Cards', images: ['/images/image4.jpeg', '/images/image11.jpeg', '/images/image12.jpeg'], path: '/category/photo-cards' }
 };
 
 export default function Home() {

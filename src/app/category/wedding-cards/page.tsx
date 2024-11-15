@@ -20,8 +20,8 @@ type CardDetail = {
 const categories: Category[] = [
   { name: "Wedding Cards", path: "/category/wedding-cards" },
   { name: "Holiday Cards", path: "/category/holiday-cards" },
-  { name: "Greeting Cards", path: "/category/greeting-cards" },
-  { name: "Photo Cards", path: "/category/photo-cards" }
+  { name: "Other Cards", path: "/category/greeting-cards" },
+  //{ name: "Photo Cards", path: "/category/photo-cards" }
 ];
 
 const cardDetails: CardDetail[] = [
