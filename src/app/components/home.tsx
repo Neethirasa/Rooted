@@ -38,17 +38,17 @@ export default function Home() {
     setFilteredCategories(matches.length > 0 ? matches : Object.keys(categories));
   };
 
-  // Handle search focus
-  const handleSearchFocus = () => {
+  // Handle search button click
+  const handleSearchClick = () => {
     if (window.innerWidth <= 768) {
-      setShowLogo(false);
+      setShowLogo(false); // Hide logo on small screens
     }
   };
 
   // Handle search blur
   const handleSearchBlur = () => {
     if (window.innerWidth <= 768) {
-      setShowLogo(true);
+      setShowLogo(true); // Show logo again on small screens
     }
   };
 
@@ -80,13 +80,19 @@ export default function Home() {
         {/* Right Section - Search Bar */}
         <div className={styles.rightSection}>
           <div className={styles.searchContainer}>
-            <Image src="/images/search.svg" alt="Search Icon" width={50} height={50} />
+            <Image
+              src="/images/search.svg"
+              alt="Search Icon"
+              width={50}
+              height={50}
+              onClick={handleSearchClick} // Trigger logo disappearance on click
+            />
             <div className={styles.searchBar}>
               <input
                 type="text"
                 placeholder="Search..."
                 value={searchInput}
-                onFocus={handleSearchFocus}
+                onFocus={handleSearchClick} // Optional: hide logo when focusing the input
                 onBlur={handleSearchBlur}
                 onChange={handleSearchChange}
               />

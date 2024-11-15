@@ -38,7 +38,15 @@
 }
 
 .logoContainer img {
-  margin-right: 10px;
+  width: 260px;
+  height: auto;
+  transition: all 0.3s ease; /* Smooth transition for size change */
+}
+
+@media (max-width: 768px) {
+  .logoContainer img {
+    width: 150px; /* Adjust the logo size for phones */
+  }
 }
 
 .companyName {
