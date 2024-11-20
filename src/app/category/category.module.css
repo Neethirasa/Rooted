@@ -98,8 +98,8 @@
 
 /* Card with updated size and 3D flip animation */
 .card {
-  width: 350px; /* Fixed width */
-  height: 450px; /* Fixed height */
+  width: 400px; /* Fixed width */
+  height: 500px; /* Fixed height */
   perspective: 1000px; /* Creates 3D perspective */
   position: relative;
   cursor: pointer;
