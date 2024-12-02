@@ -22,16 +22,34 @@
   align-items: center;
 }
 
+@media (max-width: 768px) {
+  .leftSection img,
+  .rightSection img {
+    width: 40px; /* Smaller size for mobile devices */
+    height: auto; /* Maintain aspect ratio */
+  }
+}
+
 .centerSection {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-grow: 1;
+  transition: opacity 0.3s ease;
 }
 
 .logoContainer img {
-  margin-right: 10px;
+  width: 260px;
+  height: auto;
+  transition: all 0.3s ease; /* Smooth transition for size change */
 }
+
+@media (max-width: 768px) {
+  .logoContainer img {
+    width: 175px; /* Adjust the logo size for phones */
+  }
+}
+
 
 .companyName {
   font-size: 24px;
@@ -72,6 +90,13 @@
   color: #ffffff;
 }
 
+/* Reduce font size on mobile devices */
+@media (max-width: 768px) {
+  .categoryItem {
+    font-size: 16px; /* Smaller font size for mobile devices */
+  }
+}
+
 .activeCategory {
   background-color: #dfcfbd;
   color: #342848;
@@ -81,19 +106,34 @@
 }
 
 /* Main Content */
+
 .mainContent {
   flex: 0.75;
-  padding: 20px;
+  padding: 20px; /* Add general padding inside the main content */
   background-color: #1a001f;
-  overflow-y: auto;
-  max-height: calc(100vh - 85px);
+  overflow-y: scroll; /* Ensure scrolling is within the content */
+  max-height: calc(100vh - 85px); /* Header height subtracted from full height */
+  scroll-padding-top: 45px; /* Ensure the top space is accounted during scroll */
 }
 
 /* Grid layout for images with 2 per row */
 .imageGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2 images per row */
+  flex-wrap: wrap; /* Ensures items wrap on smaller screens */
   gap: 20px;
+  padding-top: 45px; /* Add padding to create a gap visually */
+  margin-top: 0; /* Remove any margins to avoid misalignment */
+  box-sizing: border-box; /* Includes padding in the layout */
+}
+
+/* Sidebar */
+.sidebar {
+  flex: 0.25;
+  background-color: #2f253e50;
+  padding: 65px 20px 20px; /* Add top padding instead of margin */
+  overflow-y: auto;
+  max-height: calc(100vh - 85px);
 }
 
 /* Card with updated size and 3D flip animation */
@@ -159,15 +199,31 @@
   position: relative;
 }
 
+.header.hiddenHeader {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .header.hiddenHeader {
+    display: none; /* Hide the header on mobile when active */
+  }
+}
+
 .searchBar {
   display: flex;
   align-items: center;
   position: absolute;
+  top: 85px; /* Position directly below the header */
   right: 0;
-  width: 0;
+  width: 100%; /* Full width on mobile */
   opacity: 0;
   overflow: hidden;
   transition: width 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.searchBar.active {
+  opacity: 1;
+  transform: none;
 }
 
 .searchBar input {
@@ -219,4 +275,17 @@
   background-color: #342848;
   color: #dfcfbd;
   text-align: center;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .imageGrid {
+    grid-template-columns: 1fr; /* 1 card per row */
+  }
+
+  .card {
+    width: 90%; /* Adjust width for mobile screens */
+    height: 400px; /* Reduce height for mobile devices */
+    margin: 0 auto; /* Center the card */
+  }
 }

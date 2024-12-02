@@ -67,6 +67,7 @@ export default function Home() {
 
         {/* Right Section - Search Bar */}
         <div className={styles.rightSection}>
+          {/* 
           <div className={styles.searchContainer}>
             <Image
               src="/images/search.svg"
@@ -86,6 +87,7 @@ export default function Home() {
               />
             </div>
           </div>
+          */}
         </div>
       </header>
 

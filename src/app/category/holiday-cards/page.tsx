@@ -65,7 +65,6 @@ export default function WeddingCards() {
       return newFlippedCards;
     });
   };
-
   return (
     <div className={styles.categoryContainer}>
       {/* Header */}
@@ -92,6 +91,7 @@ export default function WeddingCards() {
         </div>
 
         <div className={styles.rightSection}>
+          {/*
           <div className={styles.searchContainer}>
             <Image src="/images/search.svg" alt="Search Icon" width={50} height={50} />
             <div className={styles.searchBar}>
@@ -103,6 +103,7 @@ export default function WeddingCards() {
               />
             </div>
           </div>
+          */}
         </div>
       </header>
 

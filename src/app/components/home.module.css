@@ -1,3 +1,4 @@
+/* src/app/page.module.css */
 .container {
   display: flex;
   flex-direction: column;
@@ -17,13 +18,25 @@
 .leftSection {
   display: flex;
   align-items: center;
-  padding-left: 10px;
 }
 
 .rightSection {
   display: flex;
   align-items: center;
-  padding-right: 10px;
+}
+
+.leftSection img,
+.rightSection img {
+  width: 50px; /* Default size for larger screens */
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .leftSection img,
+  .rightSection img {
+    width: 40px; /* Smaller size for mobile devices */
+    height: auto; /* Maintain aspect ratio */
+  }
 }
 
 .centerSection {
@@ -47,7 +60,7 @@
 
 @media (max-width: 768px) {
   .logoContainer img {
-    width: 150px; /* Adjust the logo size for phones */
+    width: 175px; /* Adjust the logo size for phones */
   }
 }
 
@@ -91,18 +104,6 @@
   transform: translateX(-50px);
 }
 
-/* Responsive adjustments for mobile */
-@media (max-width: 768px) {
-
-  .searchContainer:hover .searchBar {
-    width: 275px;
-    opacity: 1;
-    right: 0;
-    top:150%;
-    transform: translateX(-50px);
-  }
-}
-
 .main {
   flex-grow: 1;
   display: flex;
@@ -118,14 +119,6 @@
   flex-wrap: wrap; /* Ensures items wrap on smaller screens */
 }
 
-/* src/app/page.module.css */
-.imageGrid {
-  display: flex;
-  gap: 20px; /* Increase gap if needed for larger images */
-  transition: transform 0.2s ease-in-out;
-  flex-wrap: wrap; /* Ensures items wrap on smaller screens */
-}
-
 .imageItem {
   display: flex;
   flex-direction: column;
@@ -133,7 +126,7 @@
   cursor: pointer;
   padding: 0;
   overflow: hidden;
-  width: 400px; /* Increased width for larger display */
+  width: 100%; /* Ensures full width on phones */
   text-align: center;
   background-color: transparent;
   border-radius: 10px;
@@ -156,153 +149,49 @@
   transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
-/* Responsive layout adjustments for larger screens */
+@media (max-width: 768px) {
+  .searchBar {
+    display: flex;
+    align-items: center;
+    position: fixed; /* Use fixed positioning for centering in the viewport */
+    top: 120px; /* Adjust this value to position it vertically below the header */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Ensure perfect horizontal centering */
+    width: 300px; /* Fixed width for the search bar */
+    opacity: 0; /* Initially hidden */
+    overflow: hidden; /* Prevent any overflow */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000; /* Ensure it appears above other elements */
+  }
+
+  .searchBar.active {
+    opacity: 1;
+    transform: translateX(-50%) scale(1); /* Keep it centered and visible */
+  }
+
+  .searchBar input {
+    padding: 5px 15px;
+    border: none;
+    border-radius: 30px;
+    width: 100%; /* Ensure the input field fills the bar */
+    height: 40px;
+    color: black;
+    background-color: #DFCFBD;
+  }
+
+  .searchContainer {
+    display: flex;
+    justify-content: center; /* Center the container horizontally */
+    position: relative; /* Ensure child positioning is relative to this */
+    width: 100%; /* Allow the container to stretch across the viewport */
+  }
+  .imageItem {
+    width: 300px; /* Adjust width for larger screens */
+  }
+}
+
 @media (min-width: 992px) {
   .imageItem {
-    width: 450px; /* Further increase for larger desktops */
+    width: 400px; /* Adjust width for larger screens */
   }
-}
-
-/* Additional responsive layout for phones */
-@media (max-width: 768px) {
-  .imageGrid {
-    flex-direction: column; /* Stacks images vertically */
-    align-items: center; /* Centers images */
-  }
-
-  .imageItem {
-    width: 100%; /* Full width for images on phones */
-    max-width: 500px; /* Optional max-width to constrain image size */
-  }
-
-  .imageLabel {
-    font-size: 16px; /* Slightly smaller text on smaller screens */
-  }
-
-  .centerSection.hidden {
-    display: none; /* Fully hide the logo on mobile when active */
-  }
-}
-
-/* Modal styles */
-.modal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-.modalContent {
-  display: flex;
-  width: 80vw;
-  height: 80vh;
-  background-color: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.modalLeft {
-  flex: 1;
-  background-color: #f0f0f0;
-  padding: 20px;
-  border-right: 1px solid #ccc;
-}
-
-.categoryList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.categoryItem {
-  font-size: 20px;
-  padding: 10px;
-  cursor: pointer;
-  color: #333;
-}
-
-.activeCategory {
-  font-weight: bold;
-  color: #000;
-}
-
-.modalRight {
-  flex: 3;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-}
-
-.smallImageGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-
-.smallImage {
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-  padding-left: 100px;
-  padding-right: 100px;
-}
-
-.smallImage:hover {
-  transform: scale(1.05);
-}
-
-.enlargedImage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-  position: relative;
-  border-radius: 10px;
-}
-
-.enlargedImage img {
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 10px;
-}
-
-.close {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: 24px;
-  color: #000;
-  cursor: pointer;
-}
-
-/* Dropdown menu container */
-.dropdownMenu {
-  position: absolute;
-  top: 70px; /* Position below the menu icon */
-  left: 0;
-  background-color: #342848; /* Background color */
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  padding-left: 20px;
-}
-
-/* Individual menu items */
-.menuItem {
-  color: #dfcfbd; /* Text color */
-  padding: 8px 12px;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.menuItem:hover {
-  background-color: #3e2a4e; /* Hover background color */
-  border-radius: 3px;
 }
