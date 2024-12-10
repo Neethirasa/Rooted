@@ -17,7 +17,7 @@ const categories: Record<string, Category> = {
 };
 
 export default function Home() {
-  const [showMenu, setShowMenu] = useState(false); // State for dropdown menu
+  const [showMenu, setShowMenu] = useState<boolean>(false); // State for dropdown menu
   const [searchInput, setSearchInput] = useState(""); // State for search input
   const [filteredCategories, setFilteredCategories] = useState<string[]>(Object.keys(categories)); // Filtered categories
   const [isSearchActive, setIsSearchActive] = useState(false); // State to manage header visibility
@@ -34,13 +34,14 @@ export default function Home() {
     setFilteredCategories(matches.length > 0 ? matches : Object.keys(categories));
   };
 
-  const handleSearchClick = () => {
-    if (window.innerWidth <= 768) {
-      setIsSearchActive(true); // Hide the header on small screens
-    }
-  };
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get("email");
+    const message = formData.get("message");
 
-  const handleSearchBlur = () => setIsSearchActive(false); // Show the header again on small screens
+    window.location.href = `mailto:support@rootedcanada.com?subject=Contact Form Submission&body=Message from: ${email}%0A%0A${message}`;
+  };
 
   return (
     <div className={styles.container}>
@@ -65,29 +66,9 @@ export default function Home() {
           </Link>
         </div>
 
-        {/* Right Section - Search Bar */}
+        {/* Right Section */}
         <div className={styles.rightSection}>
-          {/* 
-          <div className={styles.searchContainer}>
-            <Image
-              src="/images/search.svg"
-              alt="Search Icon"
-              width={50}
-              height={50}
-              onClick={handleSearchClick}
-            />
-            <div className={styles.searchBar}>
-              <input
-                type="text"
-                placeholder="Search..."
-                value={searchInput}
-                onFocus={handleSearchClick}
-                onBlur={handleSearchBlur}
-                onChange={handleSearchChange}
-              />
-            </div>
-          </div>
-          */}
+          {/* Search Bar commented out */}
         </div>
       </header>
 
@@ -106,6 +87,40 @@ export default function Home() {
           ))}
         </div>
       </main>
+
+      {/* Footer */}
+      <footer className={styles.footer}>
+  <div className={styles.footerContainer}>
+    {/* Contact Form */}
+    <div className={styles.contactSection}>
+      <h3>Get in Touch</h3>
+      <form onSubmit={handleFormSubmit} className={styles.contactForm}>
+        <div className={styles.formGroup}>
+          <label htmlFor="email">Your Email</label>
+          <input type="email" id="email" name="email" required placeholder="Enter your email" />
+        </div>
+        <div className={styles.formGroup}>
+          <label htmlFor="message">Message</label>
+          <textarea id="message" name="message" required placeholder="Enter your message"></textarea>
+        </div>
+        <button type="submit" className={styles.submitButton}>Send Message</button>
+      </form>
+
+      {/* Contact Details */}
+      <div className={styles.contactDetails}>
+        <h3>Contact Us</h3>
+        <p>
+          <strong>Email:</strong> <a href="mailto:support@rootedcanada.com">support@rootedcanada.com</a>
+        </p>
+        <div className={styles.socialMedia}>
+        <a href="https://www.instagram.com/rooted_canada?igsh=MTZsYmVjdmp1b3Y4cw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+           <Image src="/images/instagram-icon.svg" alt="Instagram" width={24} height={24} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
     </div>
   );
 }
