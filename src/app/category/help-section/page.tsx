@@ -21,6 +21,7 @@ export default function HelpSection() {
 
       {/* Help Section Text */}
       <div className={styles.textContainer}>
+      <br />
         <p>
           We create eco-friendly Seed Paper products that bring sustainability and meaning to every occasion. 
           From holiday cards to wedding invitations, our items are designed to grow into wildflowers when planted, 

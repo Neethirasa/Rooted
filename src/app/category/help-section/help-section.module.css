@@ -33,45 +33,51 @@
   }
   
   /* Header with Logo */
-  .headerContainer {
-    width: 100%;
+  .logoContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #1a001f;
-    padding: 20px 0;
+    margin-top: 30px;
   }
   
-  .headerContainer img {
+  .logoContainer img {
     width: 350px;
     height: auto;
     transition: all 0.3s ease;
   }
   
   @media (max-width: 768px) {
-    .headerContainer {
-      margin-top: 30px; /* Push the logo slightly below */
+    .logoContainer {
+      margin-top: 50px; /* Push the logo slightly lower */
     }
-    .headerContainer img {
-      width: 100px; /* Make logo smaller on phone screens */
+    .logoContainer img {
+      width: 250px !important; /* Ensure smaller logo size on mobile */
     }
   }
   
   /* Help Text Section */
-  .textContainer {
-    max-width: 800px;
+  .textContainer, .supplierContainer {
+    max-width: 1300px;
     font-size: 22px;
     line-height: 1.8;
     color: #DFCFBD;
-    padding: 30px;
+    padding: 40px;
     border-radius: 10px;
     margin-bottom: 20px;
+    text-align: center;
+    background-color: #1a001f;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   
   @media (max-width: 768px) {
-    .textContainer {
+    .textContainer, .supplierContainer {
       font-size: 18px;
-      max-width: 90%;
+      max-width: 100%;
+      padding: 5px;
     }
   }
   
@@ -100,24 +106,6 @@
     }
   }
   
-/* Supplier Section */
-.supplierContainer {
-    margin-top: 20px;
-    max-width: 800px;
-    font-size: 22px;
-    line-height: 1.8;
-    color: #DFCFBD;
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    background-color: #1a001f;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
   /* Ensuring proper heading styling */
   .supplierContainer h1 {
     font-size: 28px;
@@ -127,18 +115,11 @@
   }
   
   /* Proper text block */
-  .supplierContainer p {
-    max-width: 600px;
+  .textContainer p, .supplierContainer p {
+    max-width: 1000px;
     text-align: center;
     word-wrap: break-word;
     font-size: 20px;
     margin: 0 auto;
     padding: 10px;
-  }
-  
-  @media (max-width: 768px) {
-    .supplierContainer {
-      font-size: 18px;
-      max-width: 90%;
-    }
   }
