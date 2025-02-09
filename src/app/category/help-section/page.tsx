@@ -16,7 +16,7 @@ export default function HelpSection() {
 
       {/* Logo in the middle */}
       <div className={styles.logoContainer}>
-        <Image src="/images/logo1.png" alt="Company Logo" width={350} height={350} />
+        <Image src="/images/logo1.png" alt="Company Logo" width={300} height={300} />
       </div>
 
       {/* Help Section Text */}
@@ -43,7 +43,7 @@ export default function HelpSection() {
 
       {/* Supplier Section */}
       <div className={styles.supplierContainer}>
-        <h1>About the supplier - The Green Atelier</h1>
+        <h1>About the Supplier</h1>
         <p>
           Our suppliers are based in India, and this seed card has helped support the hearing and speech-impaired community by contributing to their growth and well-being!
         </p>
