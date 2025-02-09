@@ -1,0 +1,141 @@
+/* Container for the help section page */
+.helpContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    min-height: 100vh;
+    background-color: #1a001f;
+    padding: 50px;
+    position: relative;
+  }
+  
+  /* Back Button */
+  .backButtonContainer {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+  
+  .backButton {
+    background-color: #DFCFBD;
+    color: #342848;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .backButton:hover {
+    background-color: #cbb08a;
+  }
+  
+  /* Header with Logo */
+  .headerContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a001f;
+    padding: 20px 0;
+  }
+  
+  .headerContainer img {
+    width: 350px;
+    height: auto;
+    transition: all 0.3s ease;
+  }
+  
+  @media (max-width: 768px) {
+    .headerContainer img {
+      width: 200px;
+    }
+  }
+  
+  /* Help Text Section */
+  .textContainer {
+    max-width: 800px;
+    font-size: 22px;
+    line-height: 1.8;
+    color: #DFCFBD;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .textContainer {
+      font-size: 18px;
+      max-width: 90%;
+    }
+  }
+  
+  /* Video Container */
+  .videoContainer {
+    margin-top: 20px;
+    background-color: #1a001f;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .videoContainer video {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .videoContainer video {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+  
+/* Supplier Section */
+.supplierContainer {
+    margin-top: 20px;
+    max-width: 800px;
+    font-size: 22px;
+    line-height: 1.8;
+    color: #DFCFBD;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #1a001f;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Ensuring proper heading styling */
+  .supplierContainer h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  /* Proper text block */
+  .supplierContainer p {
+    max-width: 600px;
+    text-align: center;
+    word-wrap: break-word;
+    font-size: 20px;
+    margin: 0 auto;
+    padding: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .supplierContainer {
+      font-size: 18px;
+      max-width: 90%;
+    }
+  }

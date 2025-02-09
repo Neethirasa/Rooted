@@ -77,8 +77,7 @@ export default function WeddingCards() {
           <Image src="/images/menu.svg" alt="Menu Icon" width={50} height={50} onClick={toggleMenu} />
           {showMenu && (
             <div className={styles.dropdownMenu}>
-              <Link href="/help" className={styles.menuItem}>Help</Link>
-              <Link href="/contact" className={styles.menuItem}>Contact</Link>
+             <Link href="/category/help-section" className={styles.menuItem}>Help</Link>
             </div>
           )}
         </div>
