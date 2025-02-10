@@ -36,7 +36,7 @@ export default function HelpSection() {
 
       {/* Help Video */}
       <div className={styles.videoContainer}>
-        <video controls width="800" height="450">
+        <video controls width="800" height="450" poster="/images/video-thumbnail.png">
           <source src="/videos/help-video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
