@@ -141,13 +141,15 @@
 }
 
 .imageGrid {
-  width: 100%; /* Ensures the image scales with the container */
-  height: auto; /* Maintains the aspect ratio */
+  width: 100%;
+  height: auto;
   border-radius: 10px;
-  display: flex;
-  gap: 20px;
+  display: grid; /* Use grid for clean rows/cols */
+  gap: 24px;
   transition: transform 0.2s ease-in-out;
-  flex-wrap: wrap; /* Ensures items wrap on smaller screens */
+  grid-template-columns: 1fr; /* 1 per row on phones */
+  max-width: 1200px; /* Centered max width on large screens */
+  margin: 0 auto;
 }
 
 .imageItem {
@@ -157,10 +159,11 @@
   cursor: pointer;
   padding: 0;
   overflow: hidden;
-  width: 100%; /* Ensures full width on phones */
+  width: 100%;
   text-align: center;
   background-color: transparent;
   border-radius: 10px;
+  text-decoration: none; /* Clean link style */
 }
 
 .imageGrid img {
@@ -216,14 +219,22 @@
     position: relative; /* Ensure child positioning is relative to this */
     width: 100%; /* Allow the container to stretch across the viewport */
   }
-  .imageItem {
-    width: 300px; /* Adjust width for larger screens */
+  .main {
+    padding: 24px; /* Reduce padding on small screens */
   }
 }
 
-@media (min-width: 992px) {
-  .imageItem {
-    width: 400px; /* Adjust width for larger screens */
+/* Tablet: show 2 columns */
+@media (min-width: 769px) and (max-width: 1199px) {
+  .imageGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop and up: show 3 columns */
+@media (min-width: 1200px) {
+  .imageGrid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
