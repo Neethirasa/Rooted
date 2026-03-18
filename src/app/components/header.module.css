@@ -1,0 +1,153 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  background: rgba(52, 40, 72, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  height: 72px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(223, 207, 189, 0.06);
+}
+
+/* Left — menu */
+.leftSection {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 60px;
+}
+
+.menuButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.menuButton:hover,
+.menuButton:focus-visible {
+  background-color: rgba(223, 207, 189, 0.08);
+}
+
+.menuButton img {
+  width: 22px;
+  height: 22px;
+  filter: brightness(0) invert(0.85);
+}
+
+/* Dropdown */
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  background: rgba(52, 40, 72, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(223, 207, 189, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  min-width: 220px;
+  animation: dropIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dropIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.menuItem {
+  color: var(--brand-text);
+  padding: 11px 20px;
+  font-size: 15px;
+  transition: all 0.15s;
+  border-radius: 0;
+}
+
+.menuItem:hover {
+  background-color: rgba(223, 207, 189, 0.08);
+  color: #fff;
+  padding-left: 24px;
+}
+
+.menuDivider {
+  height: 1px;
+  background-color: rgba(223, 207, 189, 0.08);
+  margin: 6px 16px;
+}
+
+/* Center — logo */
+.centerSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s;
+}
+
+.logoLink:hover {
+  opacity: 0.85;
+}
+
+.logoLink img {
+  width: 180px;
+  height: auto;
+}
+
+/* Right — spacer */
+.rightSection {
+  width: 60px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .header {
+    padding: 0 16px;
+    height: 60px;
+  }
+
+  .logoLink img {
+    width: 140px;
+  }
+
+  .leftSection,
+  .rightSection {
+    width: 44px;
+  }
+
+  .menuButton {
+    padding: 8px;
+  }
+
+  .menuButton img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .dropdownMenu {
+    min-width: 200px;
+    border-radius: 14px;
+  }
+}

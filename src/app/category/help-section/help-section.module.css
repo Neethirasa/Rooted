@@ -1,125 +1,108 @@
-/* Container for the help section page */
+/* ——— Help section ——— */
 .helpContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: center;
-    min-height: 100vh;
-    background-color: #1a001f;
-    padding: 50px;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--brand-bg);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+  width: 100%;
+}
+
+/* Logo */
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.logoContainer img {
+  width: 260px;
+  height: auto;
+}
+
+/* Text sections */
+.textSection {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.textSection p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--brand-text);
+  max-width: 640px;
+}
+
+/* Video */
+.videoContainer {
+  width: 100%;
+  margin: 24px 0 40px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.video {
+  width: 100%;
+  display: block;
+  border-radius: 14px;
+}
+
+/* Supplier */
+.supplierSection {
+  text-align: center;
+  padding: 32px 24px;
+  background-color: var(--brand-surface);
+  border-radius: 16px;
+  width: 100%;
+}
+
+.supplierSection h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--brand-accent);
+  margin-bottom: 16px;
+}
+
+.supplierSection p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--brand-text);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .content {
+    padding: 24px 16px 40px;
   }
-  
-  /* Back Button */
-  .backButtonContainer {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-  }
-  
-  .backButton {
-    background-color: #DFCFBD;
-    color: #342848;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .backButton:hover {
-    background-color: #cbb08a;
-  }
-  
-  /* Header with Logo */
-  .logoContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
-  }
-  
+
   .logoContainer img {
-    width: 350px;
-    height: auto;
-    transition: all 0.3s ease;
+    width: 200px;
   }
-  
-  @media (max-width: 768px) {
-    .logoContainer {
-      margin-top: 50px; /* Push the logo slightly lower */
-    }
-    .logoContainer img {
-      width: 250px !important; /* Ensure smaller logo size on mobile */
-    }
+
+  .textSection p {
+    font-size: 16px;
   }
-  
-  /* Help Text Section */
-  .textContainer, .supplierContainer {
-    max-width: 1300px;
-    font-size: 22px;
-    line-height: 1.8;
-    color: #DFCFBD;
-    padding: 40px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    text-align: center;
-    background-color: #1a001f;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+  .supplierSection {
+    padding: 24px 16px;
   }
-  
-  @media (max-width: 768px) {
-    .textContainer, .supplierContainer {
-      font-size: 18px;
-      max-width: 100%;
-      padding: 5px;
-    }
-  }
-  
-  /* Video Container */
-  .videoContainer {
-    margin-top: 20px;
-    background-color: #1a001f;
-    padding: 20px;
-    border-radius: 10px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .videoContainer video {
-    width: 100%;
-    max-width: 900px;
-    height: auto;
-    border-radius: 10px;
-  }
-  
-  @media (max-width: 768px) {
-    .videoContainer video {
-      width: 100%;
-      max-width: 100%;
-    }
-  }
-  
-  /* Ensuring proper heading styling */
-  .supplierContainer h1 {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  
-  /* Proper text block */
-  .textContainer p, .supplierContainer p {
-    max-width: 1000px;
-    text-align: center;
-    word-wrap: break-word;
+
+  .supplierSection h2 {
     font-size: 20px;
-    margin: 0 auto;
-    padding: 10px;
   }
+
+  .supplierSection p {
+    font-size: 15px;
+  }
+}

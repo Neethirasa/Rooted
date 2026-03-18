@@ -15,8 +15,10 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Rooted",
-  description: "Rooted",
+  title: "Rooted — Eco-Friendly Seed Paper Cards | Canada",
+  description:
+    "Discover beautiful, eco-friendly seed paper cards by Rooted Canada. From wedding invitations to holiday greetings, our cards grow into wildflowers when planted.",
+  icons: { icon: "/favicon.ico" },
 };
 
 export default function RootLayout({
@@ -26,10 +28,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* Favicon link */}
-        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

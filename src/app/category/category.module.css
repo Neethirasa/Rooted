@@ -1,306 +1,292 @@
-/* Container for the entire category page */
+/* ═══════════════════════════════════════════
+   ROOTED – Category Page Styles (Premium)
+   ═══════════════════════════════════════════ */
+
+/* ——— Page Layout ——— */
 .categoryContainer {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  background-color: #1a001f;
+  min-height: 100vh;
+  background-color: var(--brand-bg);
 }
 
-/* Header */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color: #342848;
-  height: 85px;
-}
-
-.leftSection{
-  display: flex;
-  align-items: center;
-}
-
-.rightSection {
-  display: flex;
-  align-items: center;
-}
-
-.leftSection img,
-.rightSection img {
-  width: 50px; /* Default size for larger screens */
-  height: auto;
-}
-
-@media (max-width: 768px) {
-  .leftSection img,
-  .rightSection img {
-    width: 40px; /* Smaller size for mobile devices */
-    height: auto; /* Maintain aspect ratio */
-  }
-}
-
-.centerSection {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 1;
-  transition: opacity 0.3s ease;
-}
-
-.centerSection.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.logoContainer img {
-  width: 260px;
-  height: auto;
-  transition: all 0.3s ease; /* Smooth transition for size change */
-}
-
-@media (max-width: 768px) {
-  .logoContainer img {
-    width: 175px; /* Adjust the logo size for phones */
-  }
-}
-
-
-.companyName {
-  font-size: 24px;
-  color: #DFCFBD;
-}
-
-/* Content Wrapper with Scrollable Sidebar and Main Content */
 .contentWrapper {
   display: flex;
   flex-grow: 1;
   overflow: hidden;
 }
 
-/* Sidebar */
+/* ═══════════════════════════════════════════
+   SIDEBAR
+   ═══════════════════════════════════════════ */
 .sidebar {
-  flex: 0.25;
-  background-color: #2f253e50;
-  padding: 20px;
+  width: 240px;
+  flex-shrink: 0;
+  background: linear-gradient(180deg, rgba(52, 40, 72, 0.4), rgba(52, 40, 72, 0.15));
+  padding: 32px 16px;
   overflow-y: auto;
-  max-height: calc(100vh - 85px);
+  max-height: calc(100vh - 72px);
+  border-right: 1px solid rgba(223, 207, 189, 0.06);
 }
 
 .categoryList {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .categoryItem {
-  padding: 15px 0;
-  font-size: 20px;
-  color: #dfcfbd;
+  padding: 12px 16px;
+  font-size: 15px;
+  color: var(--brand-text);
   cursor: pointer;
-  border-bottom: 1px solid #3e2a4e;
+  border-radius: 12px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
 }
 
 .categoryItem:hover {
-  color: #ffffff;
-}
-
-/* Reduce font size on mobile devices */
-@media (max-width: 768px) {
-  .categoryItem {
-    font-size: 16px; /* Smaller font size for mobile devices */
-  }
+  background-color: rgba(223, 207, 189, 0.08);
+  color: #fff;
+  transform: translateX(4px);
 }
 
 .activeCategory {
-  background-color: #dfcfbd;
-  color: #342848;
-  font-weight: bold;
-  padding-left: 10px;
-  border-radius: 10px;
+  background-color: var(--brand-text);
+  color: var(--brand-bg);
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(223, 207, 189, 0.15);
 }
 
-/* Main Content */
+.activeCategory:hover {
+  background-color: var(--brand-accent);
+  color: var(--brand-bg);
+  transform: translateX(0);
+}
 
+/* ═══════════════════════════════════════════
+   MAIN CONTENT & CARD GRID
+   ═══════════════════════════════════════════ */
 .mainContent {
-  flex: 0.75;
-  padding: 20px; /* Add general padding inside the main content */
-  background-color: #1a001f;
-  overflow-y: scroll; /* Ensure scrolling is within the content */
-  max-height: calc(100vh - 85px); /* Header height subtracted from full height */
-  scroll-padding-top: 45px; /* Ensure the top space is accounted during scroll */
+  flex: 1;
+  padding: 32px;
+  background-color: var(--brand-bg);
+  overflow-y: auto;
+  max-height: calc(100vh - 72px);
 }
 
-/* Grid layout for images with 2 per row */
 .imageGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 images per row */
-  flex-wrap: wrap; /* Ensures items wrap on smaller screens */
-  gap: 20px;
-  padding-top: 45px; /* Add padding to create a gap visually */
-  margin-top: 0; /* Remove any margins to avoid misalignment */
-  box-sizing: border-box; /* Includes padding in the layout */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
 }
 
-/* Sidebar */
-.sidebar {
-  flex: 0.25;
-  background-color: #2f253e50;
-  padding: 65px 20px 20px; /* Add top padding instead of margin */
-  overflow-y: auto;
-  max-height: calc(100vh - 85px);
-}
-
-/* Card with updated size and 3D flip animation */
+/* ═══════════════════════════════════════════
+   3D FLIP CARDS
+   ═══════════════════════════════════════════ */
 .card {
-  width: 400px; /* Fixed width */
-  height: 500px; /* Fixed height */
-  perspective: 1000px; /* Creates 3D perspective */
-  position: relative;
+  aspect-ratio: 4 / 5;
+  perspective: 1200px;
   cursor: pointer;
-  transform-style: preserve-3d;
-  transition: transform 0.6s; /* Smooth flip transition */
+  border-radius: 16px;
+  animation: cardFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
 
-/* Card faces with backface visibility hidden */
-.cardFront, .cardBack {
+.card:nth-child(1) { animation-delay: 0s; }
+.card:nth-child(2) { animation-delay: 0.08s; }
+.card:nth-child(3) { animation-delay: 0.16s; }
+.card:nth-child(4) { animation-delay: 0.24s; }
+.card:nth-child(5) { animation-delay: 0.32s; }
+.card:nth-child(6) { animation-delay: 0.4s; }
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.cardInner {
+  position: relative;
   width: 100%;
   height: 100%;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  border-radius: 16px;
+}
+
+.card:hover .cardInner {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+}
+
+.flipped .cardInner {
+  transform: rotateY(180deg);
+}
+
+/* Card faces */
+.cardFront,
+.cardBack {
   position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  backface-visibility: hidden; /* Prevents the back from showing through */
+  border-radius: 16px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   overflow: hidden;
 }
 
-/* Front side of the card */
 .cardFront {
-  background-color: #342848;
-  transform: rotateY(0deg); /* Default front position */
+  background-color: var(--brand-surface);
+}
+
+.cardFront::after {
+  content: "Click to view details";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  text-align: center;
+  font-size: 13px;
+  color: #fff;
+  opacity: 0;
+  background: linear-gradient(transparent, rgba(26, 0, 31, 0.7));
+  transition: opacity 0.3s;
+}
+
+.card:hover .cardFront::after {
+  opacity: 1;
 }
 
 .cardFront img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures the image covers the card without stretching */
-  border-radius: 10px;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Back side of the card with information */
+.card:hover .cardFront img {
+  transform: scale(1.05);
+}
+
 .cardBack {
-  background-color: #342848;
-  color: #dfcfbd;
-  transform: rotateY(180deg); /* Hidden initially */
-  padding: 20px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-radius: 10px;
-}
-
-/* When the card is flipped, rotate it 180deg */
-.flipped {
+  background: linear-gradient(
+    135deg,
+    var(--brand-surface) 0%,
+    #2a1a3a 60%,
+    #1f0f2e 100%
+  );
+  color: var(--brand-text);
   transform: rotateY(180deg);
-}
-
-
-/* Search bar */
-.searchContainer {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.header.hiddenHeader {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .header.hiddenHeader {
-    display: none; /* Hide the header on mobile when active */
-  }
-}
-
-.searchBar {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  top: 85px; /* Position directly below the header */
-  right: 0;
-  width: 100%; /* Full width on mobile */
-  opacity: 0;
-  overflow: hidden;
-  transition: width 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
-}
-
-.searchBar.active {
-  opacity: 1;
-  transform: none;
-}
-
-.searchBar input {
-  padding: 5px 15px;
-  border: none;
-  border-radius: 30px;
-  width: 300px;
-  height: 40px;
-  color: black;
-  background-color: #DFCFBD;
-}
-
-.searchContainer:hover .searchBar {
-  width: 300px;
-  opacity: 1;
-  right: 0;
-  transform: translateX(-50px);
-}
-
-/* Dropdown menu container */
-.dropdownMenu {
-  position: absolute;
-  top: 70px;
-  left: 0;
-  background-color: #342848;
-  padding: 5px;
-  border-radius: 5px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  display: flex;
+  padding: 32px;
   flex-direction: column;
-  padding-left: 20px;
-}
-
-/* Individual menu items */
-.menuItem {
-  color: #dfcfbd;
-  padding: 8px 12px;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.menuItem:hover {
-  background-color: #3e2a4e;
-  border-radius: 3px;
-}
-
-.footerContent {
-  padding: 20px;
-  background-color: #342848;
-  color: #dfcfbd;
+  gap: 16px;
   text-align: center;
 }
 
-/* Media query for mobile devices */
-@media (max-width: 768px) {
+.cardBackTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--brand-accent);
+  letter-spacing: -0.01em;
+}
+
+.cardBack p {
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.cardBackHint {
+  font-size: 13px;
+  opacity: 0.4;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(223, 207, 189, 0.1);
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — Tablet
+   ═══════════════════════════════════════════ */
+@media (max-width: 1024px) {
   .imageGrid {
-    grid-template-columns: 1fr; /* 1 card per row */
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
   }
 
-  .card {
-    width: 90%; /* Adjust width for mobile screens */
-    height: 400px; /* Reduce height for mobile devices */
-    margin: 0 auto; /* Center the card */
+  .sidebar {
+    width: 200px;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — Mobile: sidebar → horizontal tabs
+   ═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .contentWrapper {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    max-height: none;
+    padding: 12px 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-right: none;
+    border-bottom: 1px solid rgba(223, 207, 189, 0.08);
+    background: var(--brand-surface);
+  }
+
+  .categoryList {
+    flex-direction: row;
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+
+  .categoryItem {
+    white-space: nowrap;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 100px;
+  }
+
+  .categoryItem:hover {
+    transform: translateX(0);
+    transform: translateY(-1px);
+  }
+
+  .activeCategory {
+    border-radius: 100px;
+  }
+
+  .mainContent {
+    padding: 20px 16px;
+    max-height: none;
+  }
+
+  .imageGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .cardFront::after {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .imageGrid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
   }
 }
