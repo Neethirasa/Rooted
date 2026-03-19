@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
-  /* Brand palette */
+  /* Brand palette - Exact Rooted Canada Theme */
   --brand-bg: #1a001f;
   --brand-surface: #342848;
-  --brand-text: #DFCFBD;
+  --brand-text: #dfcfbd;
   --brand-accent: #f5e5cd;
   --brand-surface-hover: #3e2a4e;
 }

@@ -3,14 +3,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 24px;
-  background: rgba(52, 40, 72, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(52, 40, 72, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   height: 72px;
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 1px solid rgba(223, 207, 189, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Left — menu */
@@ -35,7 +35,7 @@
 
 .menuButton:hover,
 .menuButton:focus-visible {
-  background-color: rgba(223, 207, 189, 0.08);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .menuButton img {
@@ -49,17 +49,17 @@
   position: absolute;
   top: calc(100% + 12px);
   left: 0;
-  background: rgba(52, 40, 72, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(223, 207, 189, 0.1);
-  border-radius: 16px;
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+  background: rgba(52, 40, 72, 0.85);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
   display: flex;
   flex-direction: column;
   padding: 8px 0;
   min-width: 220px;
-  animation: dropIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: dropIn 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 @keyframes dropIn {
@@ -82,15 +82,15 @@
 }
 
 .menuItem:hover {
-  background-color: rgba(223, 207, 189, 0.08);
+  background-color: rgba(255, 255, 255, 0.1);
   color: #fff;
   padding-left: 24px;
 }
 
 .menuDivider {
   height: 1px;
-  background-color: rgba(223, 207, 189, 0.08);
-  margin: 6px 16px;
+  background-color: rgba(255, 255, 255, 0.08);
+  margin: 8px 16px;
 }
 
 /* Center — logo */
