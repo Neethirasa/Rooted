@@ -27,14 +27,14 @@ const categories: Category[] = [
 ];
 
 const cardDetails: CardDetail[] = [
-  { src: "/images/o1.png", cost: "$2.50", sizes: ["5x7", "A6"] },
-  { src: "/images/o3.png", cost: "$2.50", sizes: ["5x7", "A6"] },
-  { src: "/images/o4.png", cost: "$2.50", sizes: ["5x7", "A6"] },
-  { src: "/images/o5.jpeg", cost: "$2.50", sizes: ["5x7", "A6"] },
+  { src: "/images/B1.PNG", cost: "$2.50", sizes: ["5x7", "A6"] },
+  { src: "/images/B2.PNG", cost: "$2.50", sizes: ["5x7", "A6"] },
+  { src: "/images/B3.PNG", cost: "$2.50", sizes: ["5x7", "A6"] },
+  { src: "/images/B4.PNG", cost: "$2.50", sizes: ["5x7", "A6"] },
 ];
 
-export default function GreetingCards() {
-  const [selectedCategory, setSelectedCategory] = useState("Other Cards");
+export default function BirthdayCards() {
+  const [selectedCategory, setSelectedCategory] = useState("Birthday");
   const [flippedCards, setFlippedCards] = useState<boolean[]>(
     Array(cardDetails.length).fill(false)
   );
@@ -86,13 +86,13 @@ export default function GreetingCards() {
                   <div className={styles.cardFront}>
                     <Image
                       src={card.src}
-                      alt={`Other Card ${index + 1}`}
+                      alt={`Birthday Card ${index + 1}`}
                       width={400}
                       height={500}
                     />
                   </div>
                   <div className={styles.cardBack}>
-                    <span className={styles.cardBackTitle}>Other Card</span>
+                    <span className={styles.cardBackTitle}>Birthday Card</span>
                     <p>Cost: {card.cost}</p>
                     <p>Sizes: {card.sizes.join(", ")}</p>
                     <span className={styles.cardBackHint}>

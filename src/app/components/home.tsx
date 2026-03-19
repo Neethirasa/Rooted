@@ -26,6 +26,24 @@ const categories: Category[] = [
     description: "Seasonal greetings with heart",
   },
   {
+    label: "Birthday",
+    image: "/images/B1.PNG",
+    path: "/category/birthday",
+    description: "Celebrate another trip around the sun",
+  },
+  {
+    label: "Love",
+    image: "/images/L2.PNG",
+    path: "/category/love",
+    description: "For the ones who hold your heart",
+  },
+  {
+    label: "Mother's Day",
+    image: "/images/M1.PNG",
+    path: "/category/mothers-day",
+    description: "Honor the amazing moms in your life",
+  },
+  {
     label: "Other Cards",
     image: "/images/image3.jpeg",
     path: "/category/greeting-cards",

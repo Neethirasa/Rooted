@@ -27,14 +27,17 @@ const categories: Category[] = [
 ];
 
 const cardDetails: CardDetail[] = [
-  { src: "/images/o1.png", cost: "$2.50", sizes: ["5x7", "A6"] },
-  { src: "/images/o3.png", cost: "$2.50", sizes: ["5x7", "A6"] },
-  { src: "/images/o4.png", cost: "$2.50", sizes: ["5x7", "A6"] },
-  { src: "/images/o5.jpeg", cost: "$2.50", sizes: ["5x7", "A6"] },
+  { src: "/images/L1.PNG", cost: "$2.50", sizes: ["5x7", "A6"] },
+  { src: "/images/L2.PNG", cost: "$2.50", sizes: ["5x7", "A6"] },
+  { src: "/images/L3.PNG", cost: "$2.50", sizes: ["5x7", "A6"] },
+  { src: "/images/L4.PNG", cost: "$2.50", sizes: ["5x7", "A6"] },
+  { src: "/images/L5.PNG", cost: "$2.50", sizes: ["5x7", "A6"] },
+  { src: "/images/L6.PNG", cost: "$2.50", sizes: ["5x7", "A6"] },
+  { src: "/images/L7.PNG", cost: "$2.50", sizes: ["5x7", "A6"] },
 ];
 
-export default function GreetingCards() {
-  const [selectedCategory, setSelectedCategory] = useState("Other Cards");
+export default function LoveCards() {
+  const [selectedCategory, setSelectedCategory] = useState("Love");
   const [flippedCards, setFlippedCards] = useState<boolean[]>(
     Array(cardDetails.length).fill(false)
   );
@@ -86,13 +89,13 @@ export default function GreetingCards() {
                   <div className={styles.cardFront}>
                     <Image
                       src={card.src}
-                      alt={`Other Card ${index + 1}`}
+                      alt={`Love Card ${index + 1}`}
                       width={400}
                       height={500}
                     />
                   </div>
                   <div className={styles.cardBack}>
-                    <span className={styles.cardBackTitle}>Other Card</span>
+                    <span className={styles.cardBackTitle}>Love Card</span>
                     <p>Cost: {card.cost}</p>
                     <p>Sizes: {card.sizes.join(", ")}</p>
                     <span className={styles.cardBackHint}>

@@ -46,6 +46,15 @@ export default function Header() {
             <Link href="/category/holiday-cards" className={styles.menuItem} onClick={() => setShowMenu(false)}>
               Holiday Cards
             </Link>
+            <Link href="/category/birthday" className={styles.menuItem} onClick={() => setShowMenu(false)}>
+              Birthday
+            </Link>
+            <Link href="/category/love" className={styles.menuItem} onClick={() => setShowMenu(false)}>
+              Love
+            </Link>
+            <Link href="/category/mothers-day" className={styles.menuItem} onClick={() => setShowMenu(false)}>
+              Mother's Day
+            </Link>
             <Link href="/category/greeting-cards" className={styles.menuItem} onClick={() => setShowMenu(false)}>
               Other Cards
             </Link>
@@ -61,7 +70,7 @@ export default function Header() {
       <div className={styles.centerSection}>
         <Link href="/" className={styles.logoLink}>
           <Image
-            src="/images/logo1.png"
+            src="/images/logo2.png"
             alt="Rooted Canada"
             width={260}
             height={260}
