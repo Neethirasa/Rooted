@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Header from "./Header";
 import styles from "./home.module.css";
 
@@ -57,12 +57,40 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error' | null, message: string }>({ type: null, message: '' });
+
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
     const formData = new FormData(e.currentTarget);
     const email = formData.get("email");
     const message = formData.get("message");
-    window.location.href = `mailto:support@rootedcanada.com?subject=Contact Form Submission&body=Message from: ${email}%0A%0A${message}`;
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, message }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({ type: 'success', message: 'Your message has been sent successfully!' });
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setSubmitStatus({ type: 'error', message: data.error || 'Failed to send message.' });
+      }
+    } catch (error) {
+      setSubmitStatus({ type: 'error', message: 'An unexpected error occurred. Please try again.' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -168,9 +196,15 @@ export default function Home() {
                   placeholder="Enter your message"
                 />
               </div>
-              <button type="submit" className={styles.submitButton}>
-                Send Message
+              <button type="submit" className={styles.submitButton} disabled={isSubmitting}>
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
+              {submitStatus.type === 'success' && (
+                <p className={styles.successMessage}>{submitStatus.message}</p>
+              )}
+              {submitStatus.type === 'error' && (
+                <p className={styles.errorMessage}>{submitStatus.message}</p>
+              )}
             </form>
           </div>
 

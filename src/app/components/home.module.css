@@ -422,6 +422,29 @@
   transform: translateY(0);
 }
 
+/* Form Messages */
+.successMessage {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: rgba(167, 243, 208, 0.1);
+  border: 1px solid rgba(167, 243, 208, 0.3);
+  color: #a7f3d0;
+  border-radius: 12px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.errorMessage {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: rgba(254, 202, 202, 0.1);
+  border: 1px solid rgba(254, 202, 202, 0.3);
+  color: #fecaca;
+  border-radius: 12px;
+  font-size: 14px;
+  text-align: center;
+}
+
 /* Contact details */
 .contactEmail {
   margin-bottom: 20px;
