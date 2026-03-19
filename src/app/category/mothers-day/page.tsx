@@ -92,7 +92,7 @@ export default function MothersDayCards() {
                     />
                   </div>
                   <div className={styles.cardBack}>
-                    <span className={styles.cardBackTitle}>Mother's Day Card</span>
+                    <span className={styles.cardBackTitle}>Mother&apos;s Day Card</span>
                     <p>Cost: {card.cost}</p>
                     <p>Sizes: {card.sizes.join(", ")}</p>
                     <span className={styles.cardBackHint}>

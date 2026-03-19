@@ -53,7 +53,7 @@ export default function Header() {
               Love
             </Link>
             <Link href="/category/mothers-day" className={styles.menuItem} onClick={() => setShowMenu(false)}>
-              Mother's Day
+              Mother&apos;s Day
             </Link>
             <Link href="/category/greeting-cards" className={styles.menuItem} onClick={() => setShowMenu(false)}>
               Other Cards
