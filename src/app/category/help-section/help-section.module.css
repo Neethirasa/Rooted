@@ -3,91 +3,182 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: var(--brand-bg);
+  background-color: var(--brand-bg, #2A1E3E);
+  position: relative;
+  overflow: hidden;
 }
 
-.content {
+/* Add a subtle background glow */
+.helpContainer::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(187, 170, 119, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.mainContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 24px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.glassCard {
+  background: rgba(52, 40, 72, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.3);
+  max-width: 800px;
+  width: 100%;
+  padding: 56px 48px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  max-width: 780px;
-  margin: 0 auto;
-  padding: 40px 24px 60px;
-  width: 100%;
+  animation: slideUpFade 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Logo */
 .logoContainer {
   display: flex;
   justify-content: center;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
+  animation: float 6s ease-in-out infinite;
 }
 
-.logoContainer img {
-  width: 260px;
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.pageLogo {
+  width: 100%;
+  max-width: 240px;
   height: auto;
+  object-fit: contain;
 }
 
-/* Text sections */
+/* Text Content */
+.textContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--brand-accent, #BBAA77);
+  margin-bottom: 16px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
 .textSection {
-  margin-bottom: 24px;
   text-align: center;
 }
 
 .textSection p {
   font-size: 18px;
   line-height: 1.8;
-  color: var(--brand-text);
+  color: var(--brand-text, #e4d8b4);
   max-width: 640px;
+  margin: 0 auto;
+  opacity: 0.95;
 }
 
 /* Video */
 .videoContainer {
   width: 100%;
-  margin: 24px 0 40px;
-  border-radius: 14px;
+  max-width: 640px;
+  margin: 16px 0;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  background: #000;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.videoContainer:hover {
+  transform: scale(1.02);
 }
 
 .video {
   width: 100%;
   display: block;
-  border-radius: 14px;
 }
 
 /* Supplier */
 .supplierSection {
   text-align: center;
-  padding: 32px 24px;
-  background-color: var(--brand-surface);
-  border-radius: 16px;
+  padding: 32px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
   width: 100%;
+  max-width: 640px;
+  margin-top: 16px;
+  transition: background 0.3s;
+}
+
+.supplierSection:hover {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .supplierSection h2 {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 600;
-  color: var(--brand-accent);
-  margin-bottom: 16px;
+  color: var(--brand-accent, #BBAA77);
+  margin-bottom: 12px;
 }
 
 .supplierSection p {
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.7;
-  color: var(--brand-text);
-  max-width: 600px;
-  margin: 0 auto;
+  color: var(--brand-text, #e4d8b4);
+  opacity: 0.9;
+  margin: 0;
 }
 
 /* Mobile */
 @media (max-width: 768px) {
-  .content {
-    padding: 24px 16px 40px;
+  .mainContent {
+    padding: 32px 16px;
   }
 
-  .logoContainer img {
-    width: 200px;
+  .glassCard {
+    padding: 40px 24px;
+    border-radius: 20px;
+  }
+
+  .pageLogo {
+    max-width: 180px;
+  }
+
+  .title {
+    font-size: 24px;
   }
 
   .textSection p {
@@ -95,14 +186,10 @@
   }
 
   .supplierSection {
-    padding: 24px 16px;
+    padding: 24px;
   }
 
   .supplierSection h2 {
     font-size: 20px;
-  }
-
-  .supplierSection p {
-    font-size: 15px;
   }
 }

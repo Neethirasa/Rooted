@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "../../components/Header";
 import styles from "../category.module.css";
 
@@ -52,6 +52,13 @@ export default function GreetingCards() {
       return next;
     });
   };
+
+  useEffect(() => {
+    const activeItem = document.querySelector(`.${styles.activeCategory}`);
+    if (activeItem) {
+      activeItem.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+  }, []);
 
   return (
     <div className={styles.categoryContainer}>
