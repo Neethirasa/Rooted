@@ -136,7 +136,7 @@ export default function Home() {
       </section>
 
       {/* Category Grid */}
-      <main className={styles.main}>
+      <main className={styles.main} id="main-content" role="main" tabIndex={-1}>
         <div className={styles.sectionHeader}>
           <h2 className={`${styles.sectionTitle} ${styles.animateIn}`}>
             Our Collections
@@ -190,7 +190,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className={styles.footer}>
+      <footer className={styles.footer} role="contentinfo">
         <div className={styles.footerContainer}>
           <div className={styles.footerColumn}>
             <h3 className={styles.footerHeading}>Get in Touch</h3>

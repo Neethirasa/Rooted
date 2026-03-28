@@ -8,10 +8,11 @@ export default function Header() {
   const [showMenu, setShowMenu] = useState(false);
   const [showShopDropdown, setShowShopDropdown] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const shopContainerRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => setShowMenu((prev) => !prev);
 
-  // Close dropdown on outside click
+  // Close mobile drawer on outside click
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
@@ -24,8 +25,26 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [showMenu]);
 
+  // Keyboard handler for Shop Cards button
+  const handleShopKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      setShowShopDropdown((prev) => !prev);
+    }
+    if (e.key === "Escape") {
+      setShowShopDropdown(false);
+    }
+  };
+
+  // Close dropdown when focus leaves the shop container entirely
+  const handleShopBlur = (e: React.FocusEvent<HTMLDivElement>) => {
+    if (!shopContainerRef.current?.contains(e.relatedTarget as Node)) {
+      setShowShopDropdown(false);
+    }
+  };
+
   return (
-    <header className={styles.header}>
+    <header className={styles.header} role="banner">
       {/* Left Section (Mobile: Menu Toggle, Desktop: Spacer for centering) */}
       <div className={styles.leftSection}>
         {/* Mobile Menu Toggle */}
@@ -54,36 +73,48 @@ export default function Header() {
 
       {/* Right Section (Desktop: Nav, Mobile: Spacer) */}
       <div className={styles.rightSection}>
-        <nav className={styles.desktopRightNav}>
+        <nav className={styles.desktopRightNav} role="navigation" aria-label="Primary">
           <Link href="/" className={styles.desktopNavItem}>
             Home
           </Link>
           <div 
             className={styles.shopDropdownContainer}
+            ref={shopContainerRef}
             onMouseEnter={() => setShowShopDropdown(true)}
             onMouseLeave={() => setShowShopDropdown(false)}
+            onBlur={handleShopBlur}
           >
-            <button className={`${styles.desktopNavItem} ${styles.shopButton}`}>
-              Shop Cards <span className={styles.chevron}>▾</span>
+            <button
+              className={`${styles.desktopNavItem} ${styles.shopButton}`}
+              aria-haspopup="true"
+              aria-expanded={showShopDropdown}
+              onClick={() => setShowShopDropdown((prev) => !prev)}
+              onKeyDown={handleShopKeyDown}
+            >
+              Shop Cards{" "}
+              <span
+                className={styles.chevron}
+                style={{ display: "inline-block", transform: showShopDropdown ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s" }}
+              >▾</span>
             </button>
             {showShopDropdown && (
-              <div className={styles.shopDropdownMenu}>
-                <Link href="/category/wedding-cards" className={styles.shopDropdownItem} onClick={() => setShowShopDropdown(false)}>
+              <div className={styles.shopDropdownMenu} role="menu">
+                <Link href="/category/wedding-cards" className={styles.shopDropdownItem} role="menuitem" onClick={() => setShowShopDropdown(false)}>
                   Wedding Cards
                 </Link>
-                <Link href="/category/holiday-cards" className={styles.shopDropdownItem} onClick={() => setShowShopDropdown(false)}>
+                <Link href="/category/holiday-cards" className={styles.shopDropdownItem} role="menuitem" onClick={() => setShowShopDropdown(false)}>
                   Holiday Cards
                 </Link>
-                <Link href="/category/birthday" className={styles.shopDropdownItem} onClick={() => setShowShopDropdown(false)}>
+                <Link href="/category/birthday" className={styles.shopDropdownItem} role="menuitem" onClick={() => setShowShopDropdown(false)}>
                   Birthday
                 </Link>
-                <Link href="/category/love" className={styles.shopDropdownItem} onClick={() => setShowShopDropdown(false)}>
+                <Link href="/category/love" className={styles.shopDropdownItem} role="menuitem" onClick={() => setShowShopDropdown(false)}>
                   Love
                 </Link>
-                <Link href="/category/mothers-day" className={styles.shopDropdownItem} onClick={() => setShowShopDropdown(false)}>
+                <Link href="/category/mothers-day" className={styles.shopDropdownItem} role="menuitem" onClick={() => setShowShopDropdown(false)}>
                   Mother&apos;s Day
                 </Link>
-                <Link href="/category/greeting-cards" className={styles.shopDropdownItem} onClick={() => setShowShopDropdown(false)}>
+                <Link href="/category/greeting-cards" className={styles.shopDropdownItem} role="menuitem" onClick={() => setShowShopDropdown(false)}>
                   Other Cards
                 </Link>
               </div>
@@ -104,7 +135,12 @@ export default function Header() {
       )}
 
       {/* Sliding Mobile Drawer */}
-      <div className={`${styles.mobileDrawer} ${showMenu ? styles.drawerOpen : ""}`} ref={menuRef}>
+      <div
+        className={`${styles.mobileDrawer} ${showMenu ? styles.drawerOpen : ""}`}
+        ref={menuRef}
+        inert={!showMenu ? true : undefined}
+        aria-hidden={!showMenu}
+      >
         <div className={styles.drawerHeader}>
           <button 
             className={styles.closeButton} 
@@ -114,7 +150,7 @@ export default function Header() {
             ✕
           </button>
         </div>
-        <nav className={styles.drawerNav}>
+        <nav className={styles.drawerNav} role="navigation" aria-label="Mobile">
           <Link href="/" className={styles.drawerItem} onClick={() => setShowMenu(false)}>
             Home
           </Link>

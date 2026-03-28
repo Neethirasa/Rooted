@@ -38,6 +38,14 @@ a {
   text-decoration: none;
 }
 
+/* ─── Global Keyboard Focus Visibility (WCAG 2.4.7) ─── */
+/* Ensures every focusable element has a visible ring when keyboard-navigated */
+:focus-visible {
+  outline: 3px solid #dfcfbd;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -48,4 +56,27 @@ img {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* ─── Accessibility: Skip to Main Content (WCAG 2.4.1) ─── */
+.skip-to-main-content {
+  position: absolute;
+  top: -120px;
+  left: 0;
+  z-index: 9999;
+  padding: 12px 24px;
+  background: #dfcfbd;
+  color: #1a001f;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 6px 0;
+  transition: top 0.15s ease;
+  white-space: nowrap;
+}
+
+.skip-to-main-content:focus {
+  top: 0;
+  outline: 3px solid #1a001f;
+  outline-offset: 2px;
 }

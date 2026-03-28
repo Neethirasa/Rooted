@@ -379,8 +379,19 @@
   background-color: rgba(52, 40, 72, 0.6);
 }
 
-.contactForm input:focus,
-.contactForm textarea:focus {
+/* WCAG 2.4.7 & 2.4.11 — Keyboard focus: visible high-contrast outline */
+.contactForm input:focus-visible,
+.contactForm textarea:focus-visible {
+  outline: 3px solid #dfcfbd;
+  outline-offset: 3px;
+  border-color: var(--brand-accent);
+  box-shadow: none;
+  background-color: rgba(52, 40, 72, 0.7);
+}
+
+/* Mouse-click focus — keep visual state without outline ring */
+.contactForm input:focus:not(:focus-visible),
+.contactForm textarea:focus:not(:focus-visible) {
   outline: none;
   border-color: var(--brand-accent);
   box-shadow: 0 0 0 4px rgba(223, 207, 189, 0.1);
