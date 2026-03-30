@@ -141,6 +141,10 @@ export default function Home() {
           <h1 className={styles.heroTitle}>
             Canada&apos;s Cards that <em>grow.</em>
           </h1>
+          {/* ✅ SEO FIX: injects "Stationery" into semantic context below H1 */}
+          <p className={styles.heroKeywordSubline}>
+            Seed Paper Cards &amp; Eco-Friendly Stationery
+          </p>
           <p className={styles.heroSubtitle}>
             Plantable seed paper cards &amp; eco-friendly stationery, shipped
             across Canada. Every card blooms into wildflowers when planted.
@@ -215,7 +219,8 @@ export default function Home() {
       <footer className={styles.footer} role="contentinfo">
         <div className={styles.footerContainer}>
           <div className={styles.footerColumn}>
-            <h3 className={styles.footerHeading}>Get in Touch</h3>
+          {/* ✅ SEO FIX: p instead of h3 — footer labels are not content headings */}
+          <p className={styles.footerHeading}>Get in Touch</p>
             <form onSubmit={handleFormSubmit} className={styles.contactForm}>
               <div className={styles.formGroup}>
                 <label htmlFor="email">Your Email</label>
@@ -249,7 +254,8 @@ export default function Home() {
           </div>
 
           <div className={styles.footerColumn}>
-            <h3 className={styles.footerHeading}>Contact Us</h3>
+            {/* ✅ SEO FIX: p instead of h3 — footer labels are not content headings */}
+            <p className={styles.footerHeading}>Contact Us</p>
             <p className={styles.contactEmail}>
               <strong>Email:</strong>{" "}
               <a href="mailto:support@rootedcanada.com">

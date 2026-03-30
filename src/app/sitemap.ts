@@ -16,6 +16,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { slug: "help-section",   lastMod: "2026-03-01", priority: 0.6 },
   ];
 
+  // Static informational pages
+  const staticPages = [
+    { path: "about",          lastMod: "2026-03-29", priority: 0.7 },
+    // Uncomment when pages are published:
+    // { path: "privacy-policy", lastMod: "2026-04-01", priority: 0.3 },
+    // { path: "terms",          lastMod: "2026-04-01", priority: 0.3 },
+  ];
+
   // Blog posts — add new slugs here only when their pages are published.
   const blogPosts = [
     { slug: "how-to-plant-seed-paper-cards",       lastMod: "2026-03-08", priority: 0.8 },
@@ -30,6 +38,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: 1.0,
     },
+    // Static informational pages
+    ...staticPages.map(({ path, lastMod, priority }) => ({
+      url: `${baseUrl}/${path}`,
+      lastModified: new Date(lastMod),
+      changeFrequency: "monthly" as const,
+      priority,
+    })),
     ...categories.map(({ slug, lastMod, priority }) => ({
       url: `${baseUrl}/category/${slug}`,
       lastModified: new Date(lastMod),

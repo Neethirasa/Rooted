@@ -14,7 +14,12 @@ export const metadata: Metadata = {
     description:
       "Plantable seed paper holiday cards that bloom into wildflowers. Eco-friendly seasonal greetings shipped across Canada.",
     url: "https://www.rootedcanada.com/category/holiday-cards",
-    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630 }],
+    images: [{
+      url: "/images/eco-friendly-holiday-cards-rooted-canada.jpeg",
+      width: 1200,
+      height: 630,
+      alt: "Eco-Friendly Holiday Cards Canada — Rooted Canada",
+    }],
   },
 };
 

@@ -10,6 +10,6 @@ export default function robots(): MetadataRoute.Robots {
       disallow: ["/api/"],
     },
     sitemap: "https://www.rootedcanada.com/sitemap.xml",
-    host: "https://www.rootedcanada.com",
+    // host: removed — Yandex-only directive, ignored by Google
   };
 }

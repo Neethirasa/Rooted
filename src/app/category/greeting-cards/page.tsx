@@ -14,7 +14,12 @@ export const metadata: Metadata = {
     description:
       "Eco-friendly handmade greeting cards — plantable seed paper stationery that blooms into wildflowers. Shipped across Canada.",
     url: "https://www.rootedcanada.com/category/greeting-cards",
-    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630 }],
+    images: [{
+      url: "/images/handmade-greeting-cards-canada.jpeg",
+      width: 1200,
+      height: 630,
+      alt: "Handmade Greeting Cards Canada — Rooted Canada",
+    }],
   },
 };
 

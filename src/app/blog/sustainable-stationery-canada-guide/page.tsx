@@ -4,7 +4,8 @@ import articleStyles from "../article.module.css";
 import ArticleJsonLd from "../../components/ArticleJsonLd";
 
 export const metadata: Metadata = {
-  title: "The Complete Guide to Sustainable Stationery in Canada",
+  // ✅ Was 71 chars (Google truncates at ~60) — now 52 chars
+  title: "Sustainable Stationery in Canada: The Complete Guide",
   description:
     "Rooted Canada's guide to sustainable stationery Canada: why eco-friendly, plantable paper goods are transforming how Canadians celebrate life's special moments.",
   alternates: {
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
       "https://www.rootedcanada.com/blog/sustainable-stationery-canada-guide",
   },
   openGraph: {
-    title: "The Complete Guide to Sustainable Stationery in Canada | Rooted Canada",
+    title: "Sustainable Stationery in Canada: The Complete Guide | Rooted Canada",
     description:
       "Why eco-friendly, plantable stationery is transforming how Canadians celebrate — from weddings to birthdays — without the environmental cost.",
     url: "https://www.rootedcanada.com/blog/sustainable-stationery-canada-guide",
@@ -24,7 +25,7 @@ export default function SustainableStationeryGuide() {
   return (
     <>
       <ArticleJsonLd
-        title="The Complete Guide to Sustainable Stationery in Canada"
+        title="Sustainable Stationery in Canada: The Complete Guide"
         description="Rooted Canada's guide to sustainable stationery Canada: why eco-friendly, plantable paper goods are transforming how Canadians celebrate life's special moments."
         url="https://www.rootedcanada.com/blog/sustainable-stationery-canada-guide"
         datePublished="2026-03-20"
@@ -35,7 +36,7 @@ export default function SustainableStationeryGuide() {
           <Link href="/blog" className={articleStyles.backLink}>← All Articles</Link>
           <span className={articleStyles.articleTag}>Sustainability</span>
           <h1 className={articleStyles.articleTitle}>
-            The Complete Guide to Sustainable Stationery in Canada
+            Sustainable Stationery in Canada: The Complete Guide
           </h1>
           <p className={articleStyles.articleMeta}>March 20, 2026 · 5 min read · Rooted Canada</p>
         </div>
@@ -109,8 +110,28 @@ export default function SustainableStationeryGuide() {
               Every Rooted Canada card is eco-friendly stationery that plants
               into wildflowers. Handcrafted, Canada-wide shipping.
             </p>
+            {/* ✅ SEO FIX: keyword-anchor internal links to category pages */}
+            <p style={{ marginBottom: "16px", fontSize: "15px", lineHeight: "1.7" }}>
+              Browse our{" "}
+              <Link href="/category/wedding-cards">
+                plantable seed paper wedding cards
+              </Link>
+              ,{" "}
+              <Link href="/category/birthday">
+                eco-friendly birthday cards
+              </Link>
+              ,{" "}
+              <Link href="/category/holiday-cards">
+                sustainable holiday cards
+              </Link>
+              , and{" "}
+              <Link href="/category/mothers-day">
+                seed paper Mother&apos;s Day cards
+              </Link>{" "}
+              — all shipped across Canada.
+            </p>
             <Link href="/" className={articleStyles.ctaButton}>
-              Explore Collections →
+              Explore All Collections →
             </Link>
           </div>
         </article>

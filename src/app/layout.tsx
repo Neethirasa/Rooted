@@ -99,6 +99,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-CA">
+      <head>
+        {/* ✅ SEO FIX: preconnect to Vercel Analytics CDN for faster script load */}
+        <link rel="preconnect" href="https://va.vercel-scripts.com" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

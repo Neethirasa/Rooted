@@ -14,7 +14,13 @@ export const metadata: Metadata = {
     description:
       "Plantable wedding invitations that bloom into wildflowers. Eco-friendly, handcrafted, shipped across Canada.",
     url: "https://www.rootedcanada.com/category/wedding-cards",
-    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630 }],
+    // ✅ SEO FIX: category-specific OG image for better social share previews
+    images: [{
+      url: "/images/seed-paper-wedding-cards-canada.jpeg",
+      width: 1200,
+      height: 630,
+      alt: "Seed Paper Wedding Cards & Invitations — Rooted Canada",
+    }],
   },
 };
 

@@ -14,7 +14,12 @@ export const metadata: Metadata = {
     description:
       "Plantable seed paper love cards that bloom into wildflowers. Eco-friendly & handcrafted, shipped across Canada.",
     url: "https://www.rootedcanada.com/category/love",
-    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630 }],
+    images: [{
+      url: "/images/eco-friendly-love-card-rooted-canada.png",
+      width: 1200,
+      height: 630,
+      alt: "Eco-Friendly Love & Anniversary Cards — Rooted Canada",
+    }],
   },
 };
 

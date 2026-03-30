@@ -14,7 +14,12 @@ export const metadata: Metadata = {
     description:
       "Plantable seed paper Mother's Day cards that bloom into wildflowers. Eco-friendly & handcrafted, shipped across Canada.",
     url: "https://www.rootedcanada.com/category/mothers-day",
-    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630 }],
+    images: [{
+      url: "/images/mothers-day-seed-paper-card-canada.png",
+      width: 1200,
+      height: 630,
+      alt: "Seed Paper Mother's Day Cards Canada — Rooted Canada",
+    }],
   },
 };
 

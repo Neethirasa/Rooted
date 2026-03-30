@@ -14,7 +14,12 @@ export const metadata: Metadata = {
     description:
       "Eco-friendly seed paper birthday cards that bloom into wildflowers. Handcrafted & shipped across Canada.",
     url: "https://www.rootedcanada.com/category/birthday",
-    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630 }],
+    images: [{
+      url: "/images/seed-paper-birthday-card-canada.png",
+      width: 1200,
+      height: 630,
+      alt: "Plantable Seed Paper Birthday Cards — Rooted Canada",
+    }],
   },
 };
 

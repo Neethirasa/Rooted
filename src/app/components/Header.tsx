@@ -126,6 +126,9 @@ export default function Header() {
           <Link href="/category/help-section" className={styles.desktopNavItem}>
             Help
           </Link>
+          <Link href="/about" className={styles.desktopNavItem}>
+            Our Story
+          </Link>
         </nav>
       </div>
 
@@ -184,6 +187,9 @@ export default function Header() {
           <div className={styles.menuDivider} />
           <Link href="/category/help-section" className={styles.drawerItem} onClick={() => setShowMenu(false)}>
             Help
+          </Link>
+          <Link href="/about" className={styles.drawerItem} onClick={() => setShowMenu(false)}>
+            Our Story
           </Link>
         </nav>
       </div>
