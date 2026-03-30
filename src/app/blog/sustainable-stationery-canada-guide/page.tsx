@@ -42,7 +42,7 @@ export default function SustainableStationeryGuide() {
           environmental guilt.
         </p>
 
-        <h2>What Makes Stationery "Sustainable"?</h2>
+        <h2>What Makes Stationery &ldquo;Sustainable&rdquo;?</h2>
         <p>
           True sustainable stationery goes beyond recycled paper. The gold
           standard is <strong>seed paper</strong> — handcrafted sheets embedded
