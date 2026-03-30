@@ -139,7 +139,7 @@ export default function Home() {
         <div className={styles.heroContent}>
           <span className={styles.heroBadge}>🌱 Eco-Friendly Stationery · Canada</span>
           <h1 className={styles.heroTitle}>
-            Canada&apos;s Cards that <em>grow.</em>
+            Cards that <em>grow.</em>
           </h1>
           {/* ✅ SEO FIX: injects "Stationery" into semantic context below H1 */}
           <p className={styles.heroKeywordSubline}>
