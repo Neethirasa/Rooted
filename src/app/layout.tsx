@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Analytics } from '@vercel/analytics/next';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import JsonLd from "./components/JsonLd";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -16,10 +17,76 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Rooted — Eco-Friendly Seed Paper Cards | Canada",
+  // ─── Core Meta ─────────────────────────────────────────────────────────────
+  metadataBase: new URL("https://www.rootedcanada.com"),
+  title: {
+    default: "Rooted Canada | Eco-Friendly Seed Paper Cards & Stationery",
+    template: "%s | Rooted Canada",
+  },
   description:
-    "Discover beautiful, eco-friendly seed paper cards by Rooted Canada. From wedding invitations to holiday greetings, our cards grow into wildflowers when planted.",
-  icons: { icon: "/favicon.ico" },
+    "Shop plantable seed paper cards & eco-friendly stationery from Rooted Canada. Wedding, birthday & holiday cards that bloom into wildflowers when planted.",
+  keywords: [
+    "seed paper cards canada",
+    "plantable greeting cards",
+    "eco friendly stationery canada",
+    "sustainable wedding invitations canada",
+    "wildflower seed paper",
+    "rooted canada",
+    "handmade cards canada",
+    "eco wedding stationery",
+  ],
+
+  // ─── Canonical & Robots ────────────────────────────────────────────────────
+  alternates: {
+    canonical: "https://www.rootedcanada.com",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  // ─── Open Graph ────────────────────────────────────────────────────────────
+  openGraph: {
+    type: "website",
+    locale: "en_CA",
+    url: "https://www.rootedcanada.com",
+    siteName: "Rooted Canada",
+    title: "Rooted Canada | Eco-Friendly Seed Paper Cards & Stationery",
+    description:
+      "Shop plantable seed paper cards & eco-friendly stationery from Rooted Canada. Cards that bloom into wildflowers when planted.",
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Rooted Canada — Eco-Friendly Seed Paper Cards that Bloom into Wildflowers",
+      },
+    ],
+  },
+
+  // ─── Twitter / X Card ──────────────────────────────────────────────────────
+  twitter: {
+    card: "summary_large_image",
+    site: "@rootedcanada",
+    creator: "@rootedcanada",
+    title: "Rooted Canada | Eco-Friendly Seed Paper Cards & Stationery",
+    description:
+      "Shop plantable seed paper cards & eco-friendly stationery. Cards that bloom into wildflowers when planted.",
+    images: ["/images/og-image.jpg"],
+  },
+
+  // ─── Icons ─────────────────────────────────────────────────────────────────
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -36,6 +103,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         {children}
+        <JsonLd />
         <Analytics />
         <SpeedInsights />
       </body>

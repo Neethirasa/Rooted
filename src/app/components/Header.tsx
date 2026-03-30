@@ -54,7 +54,7 @@ export default function Header() {
           aria-label="Toggle menu"
           aria-expanded={showMenu}
         >
-          <Image src="/images/menu.svg" alt="" width={28} height={28} />
+          <Image src="/images/menu.svg" alt="Open navigation menu" width={28} height={28} />
         </button>
       </div>
 

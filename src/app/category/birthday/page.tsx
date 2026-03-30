@@ -1,117 +1,22 @@
-"use client";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
-import Header from "../../components/Header";
-import styles from "../category.module.css";
+import type { Metadata } from "next";
+import BirthdayClient from "./BirthdayClient";
 
-type Category = {
-  name: string;
-  path: string;
+export const metadata: Metadata = {
+  title: "Plantable Seed Paper Birthday Cards",
+  description:
+    "Celebrate with eco-friendly seed paper birthday cards from Rooted Canada. Plantable cards that grow into wildflowers — handcrafted & shipped across Canada.",
+  alternates: {
+    canonical: "https://www.rootedcanada.com/category/birthday",
+  },
+  openGraph: {
+    title: "Plantable Seed Paper Birthday Cards | Rooted Canada",
+    description:
+      "Eco-friendly seed paper birthday cards that bloom into wildflowers. Handcrafted & shipped across Canada.",
+    url: "https://www.rootedcanada.com/category/birthday",
+    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630 }],
+  },
 };
 
-type CardDetail = {
-  src: string;
-  cost: string;
-  sizes: string[];
-};
-
-const categories: Category[] = [
-  { name: "Wedding Cards", path: "/category/wedding-cards" },
-  { name: "Holiday Cards", path: "/category/holiday-cards" },
-  { name: "Photo Cards", path: "/category/photo-cards" },
-  { name: "Birthday", path: "/category/birthday" },
-  { name: "Love", path: "/category/love" },
-  { name: "Mother's Day", path: "/category/mothers-day" },
-  { name: "Other Cards", path: "/category/greeting-cards" },
-];
-
-const cardDetails: CardDetail[] = [
-  { src: "/images/B1.PNG", cost: "$2.50", sizes: ["5x7", "A6"] },
-  { src: "/images/B2.PNG", cost: "$2.50", sizes: ["5x7", "A6"] },
-  { src: "/images/B3.PNG", cost: "$2.50", sizes: ["5x7", "A6"] },
-  { src: "/images/B4.PNG", cost: "$2.50", sizes: ["5x7", "A6"] },
-];
-
-export default function BirthdayCards() {
-  const [selectedCategory, setSelectedCategory] = useState("Birthday");
-  const [flippedCards, setFlippedCards] = useState<boolean[]>(
-    Array(cardDetails.length).fill(false)
-  );
-  const router = useRouter();
-
-  const handleCategoryClick = (category: Category) => {
-    setSelectedCategory(category.name);
-    router.push(category.path);
-  };
-
-  const handleCardFlip = (index: number) => {
-    setFlippedCards((prev) => {
-      const next = [...prev];
-      next[index] = !next[index];
-      return next;
-    });
-  };
-
-  useEffect(() => {
-    const activeItem = document.querySelector(`.${styles.activeCategory}`);
-    if (activeItem) {
-      activeItem.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-    }
-  }, []);
-
-  return (
-    <div className={styles.categoryContainer}>
-      <Header />
-
-      <div className={styles.contentWrapper}>
-        <aside className={styles.sidebar}>
-          <ul className={styles.categoryList}>
-            {categories.map((cat) => (
-              <li
-                key={cat.name}
-                className={`${styles.categoryItem} ${selectedCategory === cat.name ? styles.activeCategory : ""
-                  }`}
-                onClick={() => handleCategoryClick(cat)}
-              >
-                {cat.name}
-              </li>
-            ))}
-          </ul>
-        </aside>
-
-        <main className={styles.mainContent}>
-          <div className={styles.imageGrid}>
-            {cardDetails.map((card, index) => (
-              <div
-                key={index}
-                className={`${styles.card} ${flippedCards[index] ? styles.flipped : ""
-                  }`}
-                onClick={() => handleCardFlip(index)}
-              >
-                <div className={styles.cardInner}>
-                  <div className={styles.cardFront}>
-                    <Image
-                      src={card.src}
-                      alt={`Birthday Card ${index + 1}`}
-                      width={400}
-                      height={500}
-                    />
-                  </div>
-                  <div className={styles.cardBack}>
-                    <span className={styles.cardBackTitle}>Birthday Card</span>
-                    <p>Cost: {card.cost}</p>
-                    <p>Sizes: {card.sizes.join(", ")}</p>
-                    <span className={styles.cardBackHint}>
-                      Click to flip back
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </main>
-      </div>
-    </div>
-  );
+export default function BirthdayPage() {
+  return <BirthdayClient />;
 }

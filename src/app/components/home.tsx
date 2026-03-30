@@ -120,11 +120,11 @@ export default function Home() {
         <div className={styles.heroContent}>
           <span className={styles.heroBadge}>🌱 Eco-Friendly</span>
           <h1 className={styles.heroTitle}>
-            Cards That <em>Grow</em>
+            Seed Paper Cards That <em>Grow</em>
           </h1>
           <p className={styles.heroSubtitle}>
-            Beautiful seed paper cards that bloom into wildflowers when planted.
-            Every card leaves a lasting, positive impact on the environment.
+            Beautiful plantable seed paper cards &amp; eco-friendly stationery,
+            shipped across Canada. Every card blooms into wildflowers when planted.
           </p>
           <Link href="/category/wedding-cards" className={styles.heroCta}>
             Explore Collections
@@ -178,10 +178,11 @@ export default function Home() {
         <div className={styles.missionContent}>
           <h2>Plant It. Watch It Grow.</h2>
           <p>
-            Our seed paper products are handcrafted in partnership with
-            communities in India, supporting the hearing and speech-impaired.
-            After enjoying your card, simply plant it in soil, water it, and
-            watch wildflowers bloom.
+            Our plantable greeting cards and eco-friendly stationery are
+            handcrafted in partnership with communities in India, supporting the
+            hearing and speech-impaired. After enjoying your card, simply plant
+            it in soil, water it, and watch wildflowers bloom — sustainable
+            cards crafted with purpose, shipped across Canada.
           </p>
           <Link href="/category/help-section" className={styles.missionLink}>
             Learn how it works →
