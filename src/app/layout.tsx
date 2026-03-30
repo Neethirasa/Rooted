@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | Rooted Canada",
   },
   description:
-    "Shop plantable seed paper cards & eco-friendly stationery from Rooted Canada. Wedding, birthday & holiday cards that bloom into wildflowers when planted.",
+    "Rooted Canada: Plantable seed paper cards & eco-friendly stationery. Wedding, birthday & holiday cards that bloom into wildflowers when planted in Canada.",
   keywords: [
     "seed paper cards canada",
     "plantable greeting cards",
@@ -95,7 +95,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en-CA">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

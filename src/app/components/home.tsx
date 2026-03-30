@@ -15,37 +15,37 @@ type Category = {
 const categories: Category[] = [
   {
     label: "Wedding Cards",
-    image: "/images/image1.jpeg",
+    image: "/images/seed-paper-wedding-cards-canada.jpeg",
     path: "/category/wedding-cards",
     description: "Elegant invitations that bloom",
   },
   {
     label: "Holiday Cards",
-    image: "/images/image2.jpeg",
+    image: "/images/eco-friendly-holiday-cards-rooted-canada.jpeg",
     path: "/category/holiday-cards",
     description: "Seasonal greetings with heart",
   },
   {
     label: "Birthday",
-    image: "/images/B1.PNG",
+    image: "/images/seed-paper-birthday-card-canada.png",
     path: "/category/birthday",
     description: "Celebrate another trip around the sun",
   },
   {
     label: "Love",
-    image: "/images/L2.PNG",
+    image: "/images/eco-friendly-love-card-rooted-canada.png",
     path: "/category/love",
     description: "For the ones who hold your heart",
   },
   {
     label: "Mother's Day",
-    image: "/images/M1.PNG",
+    image: "/images/mothers-day-seed-paper-card-canada.png",
     path: "/category/mothers-day",
     description: "Honor the amazing moms in your life",
   },
   {
     label: "Other Cards",
-    image: "/images/image3.jpeg",
+    image: "/images/handmade-greeting-cards-canada.jpeg",
     path: "/category/greeting-cards",
     description: "For every special moment",
   },
@@ -120,7 +120,7 @@ export default function Home() {
         <div className={styles.heroContent}>
           <span className={styles.heroBadge}>🌱 Eco-Friendly</span>
           <h1 className={styles.heroTitle}>
-            Seed Paper Cards That <em>Grow</em>
+            Seed Paper Cards That <em>Grow</em> — Canada
           </h1>
           <p className={styles.heroSubtitle}>
             Beautiful plantable seed paper cards &amp; eco-friendly stationery,
@@ -178,11 +178,12 @@ export default function Home() {
         <div className={styles.missionContent}>
           <h2>Plant It. Watch It Grow.</h2>
           <p>
-            Our plantable greeting cards and eco-friendly stationery are
+            Our artisan paper goods and sustainable stationery for Canada are
             handcrafted in partnership with communities in India, supporting the
-            hearing and speech-impaired. After enjoying your card, simply plant
-            it in soil, water it, and watch wildflowers bloom — sustainable
-            cards crafted with purpose, shipped across Canada.
+            hearing and speech-impaired. Each card is a piece of sustainable
+            stationery — shop eco-friendly paper goods in Canada that give back
+            to both people and the planet. Simply plant your card in soil, water
+            it, and watch wildflowers bloom.
           </p>
           <Link href="/category/help-section" className={styles.missionLink}>
             Learn how it works →

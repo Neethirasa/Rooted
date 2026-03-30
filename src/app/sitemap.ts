@@ -12,7 +12,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "love",
     "mothers-day",
     "greeting-cards",
+    "photo-cards",
     "help-section",
+  ];
+
+  const staticRoutes = [
+    { url: `${baseUrl}/blog`, priority: 0.7 },
   ];
 
   const categoryRoutes = categories.map((slug) => ({
@@ -30,5 +35,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     ...categoryRoutes,
+    ...staticRoutes.map((r) => ({
+      url: r.url,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: r.priority,
+    })),
   ];
 }
