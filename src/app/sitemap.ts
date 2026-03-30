@@ -17,12 +17,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "help-section",
   ];
 
-  // Individual blog post URLs — explicitly listed so Google discovers them immediately
-  const blogPosts = [
-    "sustainable-stationery-canada-guide",
-    "what-are-artisan-paper-goods",
-    "how-to-plant-seed-paper-cards",
+  // Blog posts — all three pages are live with full content.
+  // Uncomment new slugs only when their pages are published.
+  const publishedBlogPosts: string[] = [
+    "how-to-plant-seed-paper-cards",        // live ✅
+    "sustainable-stationery-canada-guide",   // live ✅
+    "what-are-artisan-paper-goods",          // live ✅
   ];
+
 
   const categoryRoutes = categories.map((slug) => ({
     url: `${baseUrl}/category/${slug}`,
@@ -31,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: slug === "wedding-cards" ? 0.9 : 0.8,
   }));
 
-  const blogPostRoutes = blogPosts.map((slug) => ({
+  const blogPostRoutes = publishedBlogPosts.map((slug) => ({
     url: `${baseUrl}/blog/${slug}`,
     lastModified: now,
     changeFrequency: "monthly" as const,
@@ -55,4 +57,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...blogPostRoutes,
   ];
 }
+
 

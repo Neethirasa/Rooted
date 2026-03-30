@@ -57,6 +57,12 @@ export default function Home() {
   const footerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    // 1. Add .willAnimate FIRST — this hides elements via JS only,
+    //    so the page is always visible for SSR, crawlers, and no-JS users.
+    const animateEls = document.querySelectorAll(`.${styles.animateIn}`);
+    animateEls.forEach((el) => el.classList.add(styles.willAnimate));
+
+    // 2. Then observe — IntersectionObserver adds .visible to trigger the reveal
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -68,10 +74,7 @@ export default function Home() {
       { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
     );
 
-    // Observe all animatable elements
-    const animateEls = document.querySelectorAll(`.${styles.animateIn}`);
     animateEls.forEach((el) => observer.observe(el));
-
     return () => observer.disconnect();
   }, []);
 
@@ -118,14 +121,13 @@ export default function Home() {
       {/* Hero Section */}
       <section className={styles.hero} ref={heroRef}>
         <div className={styles.heroContent}>
-          <span className={styles.heroBadge}>🌱 Eco-Friendly</span>
+          <span className={styles.heroBadge}>🌱 Eco-Friendly Stationery · Canada</span>
           <h1 className={styles.heroTitle}>
-            Plantable Seed Paper Cards &amp; Eco-Friendly Stationery in{" "}
-            <em>Canada</em>
+            Cards that <em>grow.</em>
           </h1>
           <p className={styles.heroSubtitle}>
-            Beautiful plantable seed paper cards &amp; eco-friendly stationery,
-            shipped across Canada. Every card blooms into wildflowers when planted.
+            Plantable seed paper cards &amp; eco-friendly stationery, shipped
+            across Canada. Every card blooms into wildflowers when planted.
           </p>
           <Link href="/category/wedding-cards" className={styles.heroCta}>
             Explore Collections
@@ -160,6 +162,7 @@ export default function Home() {
                   alt={`${cat.label} — ${cat.description}`}
                   width={600}
                   height={750}
+                  priority={i === 0}
                   className={styles.categoryImage}
                 />
                 <div className={styles.imageOverlay}>
@@ -246,7 +249,7 @@ export default function Home() {
               >
                 <Image
                   src="/images/instagram-icon.svg"
-                  alt=""
+                  alt="Follow Rooted Canada on Instagram"
                   width={20}
                   height={20}
                 />

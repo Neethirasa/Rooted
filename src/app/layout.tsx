@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | Rooted Canada",
   },
   description:
-    "Rooted Canada: Plantable seed paper cards & eco-friendly stationery. Wedding, birthday & holiday cards that bloom into wildflowers when planted in Canada.",
+    "Rooted Canada — Cards that grow. Plantable seed paper cards & eco-friendly stationery for weddings, birthdays & holidays that bloom into wildflowers when planted in Canada.",
   keywords: [
     "seed paper cards canada",
     "plantable greeting cards canada",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     siteName: "Rooted Canada",
     title: "Rooted Canada | Eco-Friendly Seed Paper Cards & Stationery",
     description:
-      "Shop plantable seed paper cards & eco-friendly stationery from Rooted Canada. Cards that bloom into wildflowers when planted.",
+      "Cards that grow. Shop plantable seed paper cards & eco-friendly stationery from Rooted Canada — shipped across Canada. Every card blooms into wildflowers.",
     images: [
       {
         url: "/images/og-image.jpg",
