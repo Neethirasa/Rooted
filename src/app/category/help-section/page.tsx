@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Header from "../../components/Header";
+import CategoryJsonLd from "../../components/CategoryJsonLd";
 import styles from "./help-section.module.css";
 
 export const metadata: Metadata = {
@@ -22,6 +23,10 @@ export const metadata: Metadata = {
 export default function HelpSection() {
   return (
     <div className={styles.helpContainer}>
+      <CategoryJsonLd
+        categoryName="How to Plant Your Seed Paper Card"
+        categoryUrl="https://www.rootedcanada.com/category/help-section"
+      />
       <Header />
 
       <main className={styles.mainContent}>

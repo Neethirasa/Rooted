@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import WeddingCardsClient from "./WeddingCardsClient";
+import CategoryJsonLd from "../../components/CategoryJsonLd";
 
 export const metadata: Metadata = {
   title: "Seed Paper Wedding Cards & Invitations",
@@ -18,5 +19,13 @@ export const metadata: Metadata = {
 };
 
 export default function WeddingCardsPage() {
-  return <WeddingCardsClient />;
+  return (
+    <>
+      <CategoryJsonLd
+        categoryName="Seed Paper Wedding Cards & Invitations"
+        categoryUrl="https://www.rootedcanada.com/category/wedding-cards"
+      />
+      <WeddingCardsClient />
+    </>
+  );
 }

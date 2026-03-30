@@ -4,6 +4,7 @@ import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.rootedcanada.com";
+  const now = new Date();
 
   const categories = [
     "wedding-cards",
@@ -16,30 +17,42 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "help-section",
   ];
 
-  const staticRoutes = [
-    { url: `${baseUrl}/blog`, priority: 0.7 },
+  // Individual blog post URLs — explicitly listed so Google discovers them immediately
+  const blogPosts = [
+    "sustainable-stationery-canada-guide",
+    "what-are-artisan-paper-goods",
+    "how-to-plant-seed-paper-cards",
   ];
 
   const categoryRoutes = categories.map((slug) => ({
     url: `${baseUrl}/category/${slug}`,
-    lastModified: new Date(),
+    lastModified: now,
     changeFrequency: "weekly" as const,
+    priority: slug === "wedding-cards" ? 0.9 : 0.8,
+  }));
+
+  const blogPostRoutes = blogPosts.map((slug) => ({
+    url: `${baseUrl}/blog/${slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
 
   return [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly" as const,
       priority: 1.0,
     },
     ...categoryRoutes,
-    ...staticRoutes.map((r) => ({
-      url: r.url,
-      lastModified: new Date(),
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: now,
       changeFrequency: "monthly" as const,
-      priority: r.priority,
-    })),
+      priority: 0.7,
+    },
+    ...blogPostRoutes,
   ];
 }
+

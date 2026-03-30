@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import BirthdayClient from "./BirthdayClient";
+import CategoryJsonLd from "../../components/CategoryJsonLd";
 
 export const metadata: Metadata = {
   title: "Plantable Seed Paper Birthday Cards",
@@ -18,5 +19,13 @@ export const metadata: Metadata = {
 };
 
 export default function BirthdayPage() {
-  return <BirthdayClient />;
+  return (
+    <>
+      <CategoryJsonLd
+        categoryName="Plantable Seed Paper Birthday Cards"
+        categoryUrl="https://www.rootedcanada.com/category/birthday"
+      />
+      <BirthdayClient />
+    </>
+  );
 }

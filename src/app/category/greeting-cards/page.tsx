@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import GreetingCardsClient from "./GreetingCardsClient";
+import CategoryJsonLd from "../../components/CategoryJsonLd";
 
 export const metadata: Metadata = {
   title: "Handmade Greeting Cards Canada",
@@ -18,5 +19,13 @@ export const metadata: Metadata = {
 };
 
 export default function GreetingCardsPage() {
-  return <GreetingCardsClient />;
+  return (
+    <>
+      <CategoryJsonLd
+        categoryName="Handmade Greeting Cards Canada"
+        categoryUrl="https://www.rootedcanada.com/category/greeting-cards"
+      />
+      <GreetingCardsClient />
+    </>
+  );
 }

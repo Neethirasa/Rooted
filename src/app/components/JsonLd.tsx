@@ -31,6 +31,7 @@ export default function JsonLd() {
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": "https://www.rootedcanada.com/#business",
     name: "Rooted Canada",
     url: "https://www.rootedcanada.com",
     image: "https://www.rootedcanada.com/images/og-image.jpg",

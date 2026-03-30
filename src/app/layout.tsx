@@ -27,12 +27,15 @@ export const metadata: Metadata = {
     "Rooted Canada: Plantable seed paper cards & eco-friendly stationery. Wedding, birthday & holiday cards that bloom into wildflowers when planted in Canada.",
   keywords: [
     "seed paper cards canada",
-    "plantable greeting cards",
+    "plantable greeting cards canada",
     "eco friendly stationery canada",
+    "sustainable stationery canada",
     "sustainable wedding invitations canada",
-    "wildflower seed paper",
+    "wildflower seed paper canada",
     "rooted canada",
     "handmade cards canada",
+    "artisan paper goods canada",
+    "biodegradable greeting cards",
     "eco wedding stationery",
   ],
 

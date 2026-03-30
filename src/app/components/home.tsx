@@ -120,7 +120,8 @@ export default function Home() {
         <div className={styles.heroContent}>
           <span className={styles.heroBadge}>🌱 Eco-Friendly</span>
           <h1 className={styles.heroTitle}>
-            Seed Paper Cards That <em>Grow</em> — Canada
+            Plantable Seed Paper Cards &amp; Eco-Friendly Stationery in{" "}
+            <em>Canada</em>
           </h1>
           <p className={styles.heroSubtitle}>
             Beautiful plantable seed paper cards &amp; eco-friendly stationery,

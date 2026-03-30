@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import HolidayCardsClient from "./HolidayCardsClient";
+import CategoryJsonLd from "../../components/CategoryJsonLd";
 
 export const metadata: Metadata = {
   title: "Eco-Friendly Holiday Cards Canada",
@@ -18,5 +19,13 @@ export const metadata: Metadata = {
 };
 
 export default function HolidayCardsPage() {
-  return <HolidayCardsClient />;
+  return (
+    <>
+      <CategoryJsonLd
+        categoryName="Eco-Friendly Holiday Cards Canada"
+        categoryUrl="https://www.rootedcanada.com/category/holiday-cards"
+      />
+      <HolidayCardsClient />
+    </>
+  );
 }

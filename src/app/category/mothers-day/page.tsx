@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import MothersDayClient from "./MothersDayClient";
+import CategoryJsonLd from "../../components/CategoryJsonLd";
 
 export const metadata: Metadata = {
   title: "Seed Paper Mother's Day Cards Canada",
@@ -18,6 +19,14 @@ export const metadata: Metadata = {
 };
 
 export default function MothersDayPage() {
-  return <MothersDayClient />;
+  return (
+    <>
+      <CategoryJsonLd
+        categoryName="Seed Paper Mother's Day Cards Canada"
+        categoryUrl="https://www.rootedcanada.com/category/mothers-day"
+      />
+      <MothersDayClient />
+    </>
+  );
 }
 

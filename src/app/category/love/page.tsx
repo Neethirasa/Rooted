@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import LoveClient from "./LoveClient";
+import CategoryJsonLd from "../../components/CategoryJsonLd";
 
 export const metadata: Metadata = {
   title: "Eco-Friendly Love & Anniversary Cards",
@@ -18,5 +19,13 @@ export const metadata: Metadata = {
 };
 
 export default function LovePage() {
-  return <LoveClient />;
+  return (
+    <>
+      <CategoryJsonLd
+        categoryName="Eco-Friendly Love & Anniversary Cards"
+        categoryUrl="https://www.rootedcanada.com/category/love"
+      />
+      <LoveClient />
+    </>
+  );
 }
