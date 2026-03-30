@@ -117,6 +117,9 @@ export default function Header() {
                 <Link href="/category/greeting-cards" className={styles.shopDropdownItem} role="menuitem" onClick={() => setShowShopDropdown(false)}>
                   Other Cards
                 </Link>
+                <Link href="/category/photo-cards" className={styles.shopDropdownItem} role="menuitem" onClick={() => setShowShopDropdown(false)}>
+                  Photo Cards
+                </Link>
               </div>
             )}
           </div>
@@ -173,6 +176,9 @@ export default function Header() {
             </Link>
             <Link href="/category/greeting-cards" className={styles.drawerSubItem} onClick={() => setShowMenu(false)}>
               Other Cards
+            </Link>
+            <Link href="/category/photo-cards" className={styles.drawerSubItem} onClick={() => setShowMenu(false)}>
+              Photo Cards
             </Link>
           </div>
           <div className={styles.menuDivider} />

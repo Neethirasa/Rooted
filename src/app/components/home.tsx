@@ -71,11 +71,27 @@ export default function Home() {
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+      // rootMargin bottom was -50px — too aggressive on small viewports (375px).
+      // Reduced to 0px so any card touching the viewport edge triggers the reveal.
+      { threshold: 0.05, rootMargin: "0px 0px 0px 0px" }
     );
 
     animateEls.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+
+    // Safety fallback: if any items haven't become visible after 1.5s
+    // (e.g. observer blocked by overflow clipping on mobile), force them visible.
+    const fallbackTimer = setTimeout(() => {
+      animateEls.forEach((el) => {
+        if (!el.classList.contains(styles.visible)) {
+          el.classList.add(styles.visible);
+        }
+      });
+    }, 1500);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(fallbackTimer);
+    };
   }, []);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -123,7 +139,7 @@ export default function Home() {
         <div className={styles.heroContent}>
           <span className={styles.heroBadge}>🌱 Eco-Friendly Stationery · Canada</span>
           <h1 className={styles.heroTitle}>
-            Cards that <em>grow.</em>
+            Canada&apos;s Cards that <em>grow.</em>
           </h1>
           <p className={styles.heroSubtitle}>
             Plantable seed paper cards &amp; eco-friendly stationery, shipped

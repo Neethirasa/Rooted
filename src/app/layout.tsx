@@ -20,11 +20,11 @@ export const metadata: Metadata = {
   // ─── Core Meta ─────────────────────────────────────────────────────────────
   metadataBase: new URL("https://www.rootedcanada.com"),
   title: {
-    default: "Rooted Canada | Eco-Friendly Seed Paper Cards & Stationery",
+    default: "Rooted Canada | Seed Paper Cards & Stationery",
     template: "%s | Rooted Canada",
   },
   description:
-    "Rooted Canada — Cards that grow. Plantable seed paper cards & eco-friendly stationery for weddings, birthdays & holidays that bloom into wildflowers when planted in Canada.",
+    "Rooted Canada — Plantable seed paper cards & eco-friendly stationery shipped across Canada. Every card blooms into wildflowers.",
   keywords: [
     "seed paper cards canada",
     "plantable greeting cards canada",

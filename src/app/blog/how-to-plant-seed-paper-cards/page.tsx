@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import articleStyles from "../article.module.css";
+import ArticleJsonLd from "../../components/ArticleJsonLd";
 
 export const metadata: Metadata = {
   title: "How to Plant Your Seed Paper Card: A Complete Growing Guide",
@@ -20,8 +21,16 @@ export const metadata: Metadata = {
 
 export default function PlantingGuideArticle() {
   return (
-    <div className={articleStyles.articleContainer}>
-      <div className={articleStyles.articleHero}>
+    <>
+      <ArticleJsonLd
+        title="How to Plant Your Seed Paper Card: A Complete Growing Guide"
+        description="Step-by-step guide to planting your Rooted Canada seed paper card and growing a wildflower garden from your eco-friendly greeting card."
+        url="https://www.rootedcanada.com/blog/how-to-plant-seed-paper-cards"
+        datePublished="2026-03-08"
+        dateModified="2026-03-08"
+      />
+      <div className={articleStyles.articleContainer}>
+        <div className={articleStyles.articleHero}>
         <Link href="/blog" className={articleStyles.backLink}>← All Articles</Link>
         <span className={articleStyles.articleTag}>Planting Guide</span>
         <h1 className={articleStyles.articleTitle}>
@@ -107,6 +116,7 @@ export default function PlantingGuideArticle() {
           </Link>
         </div>
       </article>
-    </div>
+      </div>
+    </>
   );
 }
