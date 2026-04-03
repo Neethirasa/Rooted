@@ -179,6 +179,43 @@
   transform: translateX(4px);
 }
 
+.heroButtonGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.heroSecondaryCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 36px;
+  background: rgba(223, 207, 189, 0.1);
+  color: var(--brand-text);
+  font-size: 17px;
+  font-weight: 600;
+  border: 1px solid rgba(223, 207, 189, 0.2);
+  border-radius: 100px;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  text-decoration: none;
+}
+
+.heroSecondaryCta:hover {
+  background: rgba(223, 207, 189, 0.2);
+  border-color: rgba(223, 207, 189, 0.4);
+  transform: scale(1.02);
+}
+
+.heroSecondaryCta svg {
+  transition: transform 0.3s;
+}
+
+.heroSecondaryCta:hover svg {
+  transform: scale(1.1) rotate(5deg);
+}
+
 /* ═══════════════════════════════════════════
    MAIN — Collections Grid
    ═══════════════════════════════════════════ */
@@ -556,6 +593,11 @@
   }
 
   .heroCta {
+    padding: 12px 28px;
+    font-size: 15px;
+  }
+
+  .heroSecondaryCta {
     padding: 12px 28px;
     font-size: 15px;
   }
