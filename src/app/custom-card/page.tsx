@@ -303,7 +303,7 @@ export default function CustomCardPage() {
 
             {success ? (
               <div className="p-4 bg-green-900/40 text-green-200 border border-green-800 rounded-lg text-center font-medium">
-                Design sent successfully! We'll be in touch soon.
+                Design sent successfully! We&apos;ll be in touch soon.
               </div>
             ) : (
               <button

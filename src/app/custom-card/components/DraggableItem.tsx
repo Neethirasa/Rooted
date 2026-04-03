@@ -73,7 +73,7 @@ export default function DraggableItem({ element, isSelected, onSelect, onChange,
     } else if (isRotating && containerRef.current) {
       const { cx, cy, startAngle, elRotation } = rotateStartRef.current;
       const angle = Math.atan2(e.clientY - cy, e.clientX - cx) * (180 / Math.PI);
-      let diff = angle - startAngle;
+      const diff = angle - startAngle;
       onChange({ rotation: elRotation + diff });
     }
   };
@@ -173,6 +173,7 @@ export default function DraggableItem({ element, isSelected, onSelect, onChange,
           {element.content}
         </div>
       ) : (
+        /* eslint-disable-next-line @next/next/no-img-element */
         <img
           src={element.content}
           alt="Uploaded Element"
