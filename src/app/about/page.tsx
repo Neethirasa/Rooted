@@ -5,14 +5,14 @@ import Header from "../components/Header";
 import styles from "./about.module.css";
 
 export const metadata: Metadata = {
-  title: "Our Story — Rooted Canada | Eco-Friendly Seed Paper Cards",
+  title: "Our Story — Eco-Friendly Seed Paper Cards",
   description:
     "Rooted Canada was founded on one idea: a card should leave the world better than it found it. Learn about our mission, our artisan partners in India, and why we make seed paper cards.",
   alternates: {
     canonical: "https://www.rootedcanada.com/about",
   },
   openGraph: {
-    title: "Our Story — Rooted Canada | Eco-Friendly Seed Paper Cards",
+    title: "Our Story — Eco-Friendly Seed Paper Cards",
     description:
       "Rooted Canada was founded on one idea: a card should leave the world better than it found it. Learn about our mission, our artisan partners, and why we make plantable seed paper cards.",
     url: "https://www.rootedcanada.com/about",

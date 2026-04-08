@@ -78,6 +78,7 @@ export default function GreetingCardsClient() {
           </ul>
         </aside>
         <main className={styles.mainContent}>
+          <h1 className="sr-only">Handmade Greeting Cards Canada</h1>
           <div className={styles.imageGrid}>
             {cardDetails.map((card, index) => (
               <div

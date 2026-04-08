@@ -79,6 +79,7 @@ export default function WeddingCardsClient() {
           </ul>
         </aside>
         <main className={styles.mainContent}>
+          <h1 className="sr-only">Seed Paper Wedding Cards &amp; Invitations</h1>
           <div className={styles.imageGrid}>
             {cardDetails.map((card, index) => (
               <div

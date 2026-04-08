@@ -80,6 +80,7 @@ export default function HolidayCardsClient() {
           </ul>
         </aside>
         <main className={styles.mainContent}>
+          <h1 className="sr-only">Eco-Friendly Holiday Cards Canada</h1>
           <div className={styles.imageGrid}>
             {cardDetails.map((card, index) => (
               <div

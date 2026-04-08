@@ -78,6 +78,7 @@ export default function MothersDayClient() {
           </ul>
         </aside>
         <main className={styles.mainContent}>
+          <h1 className="sr-only">Seed Paper Mother's Day Cards Canada</h1>
           <div className={styles.imageGrid}>
             {cardDetails.map((card, index) => (
               <div

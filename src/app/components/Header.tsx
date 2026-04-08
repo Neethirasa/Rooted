@@ -25,6 +25,25 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [showMenu]);
 
+  // Close dropdown on Escape key from anywhere
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        e.stopPropagation();
+        setShowShopDropdown(false);
+      }
+    };
+    if (showShopDropdown) {
+      document.addEventListener("keydown", handleEscape, true);
+      document.addEventListener("keyup", handleEscape, true);
+    }
+    return () => {
+      document.removeEventListener("keydown", handleEscape, true);
+      document.removeEventListener("keyup", handleEscape, true);
+    };
+  }, [showShopDropdown]);
+
   // Keyboard handler for Shop Cards button
   const handleShopKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
     if (e.key === "Enter" || e.key === " ") {
@@ -32,6 +51,8 @@ export default function Header() {
       setShowShopDropdown((prev) => !prev);
     }
     if (e.key === "Escape") {
+      e.preventDefault();
+      e.stopPropagation();
       setShowShopDropdown(false);
     }
   };

@@ -84,6 +84,7 @@ export default function PhotoCardsClient() {
         </aside>
 
         <main className={styles.mainContent}>
+          <h1 className="sr-only">Eco-Friendly Photo Cards Canada</h1>
           <div className={styles.imageGrid}>
             {cardDetails.map((card, index) => (
               <div

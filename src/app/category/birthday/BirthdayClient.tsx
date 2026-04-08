@@ -78,6 +78,7 @@ export default function BirthdayClient() {
           </ul>
         </aside>
         <main className={styles.mainContent}>
+          <h1 className="sr-only">Plantable Seed Paper Birthday Cards</h1>
           <div className={styles.imageGrid}>
             {cardDetails.map((card, index) => (
               <div
